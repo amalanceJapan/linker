@@ -457,10 +457,11 @@
   <script src="js/functions.js"></script>
   <!-- 認証処理 -->
   <script src="js/linker.js"></script>
+  <!-- Relay2 only
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
-      // 'res' パラメータのチェック（Relay2専用）
+      // 'res' パラメータのチェック
       if (urlParams.get('res') === 'success') {
         window.location.href = 'welcome.html';
       } else if (urlParams.get('res') === 'failed') {
@@ -468,6 +469,7 @@
       }
     });    
   </script>
+  end: Relay2 only -->
 
 </body>
 
