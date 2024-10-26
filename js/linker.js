@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var newUrl = new URL(currentUrl);
     var urlParams = new URLSearchParams(newUrl.search);
 
-    // resパラメータが存在しないか、notyetではない場合アラート表示後リダイレクト
+    // resパラメータが存在しないか、notyetではない場合アラート表示後リダイレクト（避難所ポータル専用）
     if (!urlParams.has('res') || urlParams.get('res') !== 'notyet') {
       alert("再処理が必要です｜Please retry");
 
