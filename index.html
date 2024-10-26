@@ -463,13 +463,14 @@
       var urlParams = new URLSearchParams(window.location.search);
       // 'res' パラメータのチェック
       if (urlParams.get('res') === 'success') {
-        window.location.href = 'welcome.html';
+        // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
+        window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (urlParams.get('res') === 'failed') {
         document.getElementById("redirectToNewFqdn").click();
       }
-    });    
-  </script>
-  
+    });
+  </script>  
+
 </body>
 
 </html>
