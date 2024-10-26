@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>wiffy</title>
+  <meta name="description" content="wiffy">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="wiffy" />
+  <!-- icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logos/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logos/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon-16x16.png">
+  <link rel="manifest" href="images/logos/site.webmanifest">
+  <link rel="mask-icon" href="images/logos/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Stylesheets & Fonts -->
+  <link href="css/plugins.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var urlParams = new URLSearchParams(window.location.search);
+
+      var changeLanguageLink = document.getElementById('changeLanguage');
+      var langToggleSpan = document.getElementById('langToggle');
+
+      // 言語切り替えリンクをクリックした時の処理
+      changeLanguageLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (urlParams.get('lang') === 'en') {
+          urlParams.set('lang', 'ja');
+        } else {
+          urlParams.set('lang', 'en');
+        }
+        window.location.search = urlParams.toString();
+      });
+
+      // 言語に応じてテキストを変更
+      if (urlParams.get('lang') === 'en') {
+        langToggleSpan.innerText = "JA";
+        changeLanguageLink.innerText = "日本語";
+
+        document.getElementById('notice-message-1').innerHTML = 'Connected to the Internet!';
+        document.getElementById('notice-message-2').innerHTML = 'You can use it for 15 minutes at a time, up to 3 times a day. Harmful sites will be removed.';
+        document.getElementById('notice-message-3').innerHTML = 'To ensure smooth login from next time onwards, turn on Auto-Login. Also, by fixing the Wi-Fi address, you can omit logging into third-party services such as SNS from the next time onwards.';
+        document.getElementById('notice-message-4').innerHTML = 'Tap the <i class="fa fa-info-circle"></i> icon of the Wi-Fi name you are connected to.';
+        document.getElementById('notice-message-5').innerHTML = 'Tap <i class="fa fa-cog"></i> of the Wi-Fi name you are connected to.';
+        document.getElementById('notice-message-6').innerHTML = 'Turn <strong>on</strong> <strong>Auto Login</strong>. Turn <strong>off</strong> <strong>Private Wi-Fi Address</strong>.';
+        document.getElementById('notice-message-7').innerHTML = 'Set <strong>Privacy</strong> to <strong>Use Device MAC</strong>.';
+        document.getElementById('offlineMessage').innerHTML = 'No internet connection. Only the following services are available.';
+      } else {
+        langToggleSpan.innerText = "EN";
+        changeLanguageLink.innerText = "English";
+
+        document.getElementById('notice-message-1').innerHTML = 'インターネットに接続されました！';
+        document.getElementById('notice-message-2').innerHTML = '1回15分、1日3回までご利用いただけます。有害サイトは除去されます。';
+        document.getElementById('notice-message-3').innerHTML = '次回からスムーズにログインできるように、自動ログインをオンにしてください。また、Wi-Fiアドレスを固定することで、次回以降SNSなどのサードパーティサービスのログインを省略できます。';
+        document.getElementById('notice-message-4').innerHTML = '接続中のWi-Fi名の<i class="fa fa-info-circle"></i>アイコンをタップします。';
+        document.getElementById('notice-message-5').innerHTML = '接続中のWi-Fi名の<i class="fa fa-cog"></i>をタップします。';
+        document.getElementById('notice-message-6').innerHTML = '<strong>自動ログイン</strong>を<strong>オン</strong>にします。<strong>プライベートWi-Fiアドレス</strong>を<strong>オフ</strong>にします。';
+        document.getElementById('notice-message-7').innerHTML = '<strong>プライバシー</strong>を<strong>デバイスMACを使用</strong>に設定します。';
+        document.getElementById('offlineMessage').innerHTML = 'インターネット接続がありません。以下のサービスのみご利用いただけます。';
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="body-inner">
+    <header id="header" class="header-logo-center">
+      <div class="header-inner">
+        <div class="container">
+          <div id="logo">
+            <a href="#">
+              <img class="logo-default" src="images/logos/wiffy_t.png" alt="wiffy">
+              <img class="logo-dark" src="images/logos/wiffy_t.png" alt="wiffy">
+            </a>
+          </div>
+          <div class="header-extras">
+            <ul>
+              <li>
+                <div class="p-dropdown">
+                  <a href="#"><i class="icon-globe"></i><span id="langToggle">EN</span></a>
+                  <ul class="p-dropdown-content">
+                    <li><a href="#" id="changeLanguage">English</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="p-t-0 p-b-50">
+      <div class="container">
+        <div class="text-center">
+          <div class="call-to-action call-to-action-border">
+            <h3 id="notice-message-1"></h3>
+            <p id="notice-message-2"></p>
+            <!-- 顧客毎に変更！ -->
+            <a class="btn" href="https://lin.ee/k0pBcTr">OK</a>
+          </div>
+        </div>
+        <p id="notice-message-3"></p>
+        <table class="table table-bordered">
+          <tr>
+            <th style="text-transform: none;">iPhone</th>
+            <th style="text-transform: none;">Android</th>
+          </tr>
+          <tr>
+            <td width="50%" id="notice-message-4"></td>
+            <td width="50%" id="notice-message-5"></td>
+          </tr>
+          <tr>
+            <td id="notice-message-6"></td>
+            <td id="notice-message-7"></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <footer id="footer" class="">
+      <div class="copyright-content">
+        <div class="container">
+          <div class="copyright-text text-center">&copy; wiffy</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Plugins -->
+  <script src="js/jquery.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/functions.js"></script>
+  <script src="js/redirect.js"></script>
+
+</body>
+</html>

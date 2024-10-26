@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <title>wiffy</title>
+  <meta name="description" content="wiffy">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="wiffy" />
+
+  <!-- icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logos/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logos/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon-16x16.png">
+  <link rel="manifest" href="images/logos/site.webmanifest">
+  <link rel="mask-icon" href="images/logos/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Stylesheets & Fonts -->
+  <link href="css/plugins.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    #connection {
+      display: none;
+    }
+
+    #notice,
+    #browser-check {
+      display: block;
+    }
+
+    #offlineMessage {
+      display: none;
+      color: red;
+      font-weight: bold;
+    }
+
+    /* PCサイズ（最小幅1201px以上）の場合 */
+    @media screen and (min-width: 1201px) {
+      #connection {
+        display: block;
+      }
+
+      #notice,
+      #browser-check {
+        display: none;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var urlParams = new URLSearchParams(window.location.search);
+
+      // copied=trueが含まれている場合、connectionを表示し、noticeとbrowser-checkを非表示にする
+      if (urlParams.get('copied') === 'true') {
+        document.getElementById('connection').style.display = 'block';
+        document.getElementById('notice').style.display = 'none';
+        document.getElementById('browser-check').style.display = 'none';
+      }
+
+      // インターネット接続がない場合、offlineMessageを表示
+      if (!navigator.onLine) {
+        document.getElementById('offlineMessage').style.display = 'block';
+      }
+
+      var langToggleSpan = document.getElementById('langToggle');
+      var changeLanguageLink = document.getElementById('changeLanguage');
+
+      // 初回ロード時に言語パラメータがなければデフォルト設定
+      if (!urlParams.has('lang')) {
+        urlParams.set('lang', 'ja');
+        window.location.search = urlParams.toString();
+      }
+
+      // 言語パラメータが'en'なら英語に設定
+      if (urlParams.get('lang') === 'en') {
+        langToggleSpan.innerText = "JA";
+        changeLanguageLink.innerText = "日本語";
+        document.getElementById('browser-check-text').textContent = 'Are you already using a standard browser?';
+        document.getElementById('browser-check-button').textContent = 'Yes';
+        document.getElementById('notice-message-0').textContent = 'If this page is displayed in a non-standard browser and content is not visible, please open it in a standard browser.';
+        document.getElementById('notice-message-1').innerHTML = 'You can use the Internet for 15 minutes at a time, up to three times a day. By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
+        document.getElementById('offlineMessage').textContent = 'No internet connection.';
+        document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the URL of this page.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-outline btn-dark">Copy URL</button>';
+        document.getElementById('item-2').innerHTML = '<p>Use without connecting to the Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without connecting to the Internet</strong></span>.</p></div><div class="col-lg-6 border-left"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
+        document.getElementById('item-3').innerHTML = '<p>After returning to the home screen while maintaining the Wi-Fi connection, open the standard browser like Chrome or Safari, <strong>paste the copied content into the address bar</strong>, and reopen the page.</p>';
+
+      } else {
+        langToggleSpan.innerText = "EN";
+        changeLanguageLink.innerText = "English";
+        document.getElementById('browser-check-text').textContent = 'すでに標準ブラウザで開いていますか？';
+        document.getElementById('browser-check-button').textContent = 'はい';
+        document.getElementById('notice-message-0').textContent = 'このページが通常とは異なるブラウザ（埋め込みブラウザ）で表示され、コンテンツが正しくご利用いただけない場合、標準ブラウザで開き直してください。';
+        document.getElementById('notice-message-1').innerHTML = 'LINEでログインすることで、1回15分、1日3回までインターネットをご利用いただけます。本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
+        document.getElementById('offlineMessage').textContent = 'インターネット接続がありません。';
+        document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてこのページのURLをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-outline btn-dark">Copy URL</button>';
+        document.getElementById('item-2').innerHTML = '<p>インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6 border-left"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
+        document.getElementById('item-3').innerHTML = '<p>Wi-Fi接続が維持された状態でホーム画面に戻り、ChromeやSafariなどの標準ブラウザを開き、<strong>先ほどコピーした内容をアドレスバーにペーストし</strong>、ページを開き直します。</p>';
+
+      }
+
+      // 言語切り替えリンクをクリックした時の処理
+      changeLanguageLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (urlParams.get('lang') === 'en') {
+          urlParams.set('lang', 'ja');
+        } else {
+          urlParams.set('lang', 'en');
+        }
+        window.location.search = urlParams.toString();
+      });
+    });
+
+    function copyUrlToClipboard(button) {
+      var urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('copied', 'true');
+      var baseUrl = window.location.protocol + "//" + window.location.hostname + window.location.pathname + "?" + urlParams.toString();
+      var tempInput = document.createElement("input");
+      tempInput.value = baseUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      button.textContent = "URL Copied!";
+    }
+
+    function showConnection() {
+      document.getElementById("connection").style.display = "block";
+      document.getElementById("browser-check").style.display = "none";
+      document.getElementById("notice").style.display = "none";
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="body-inner">
+
+    <header id="header" class="header-logo-center">
+      <div class="header-inner">
+        <div class="container">
+          <div id="logo">
+            <a href="#"><img class="logo-default" src="images/logos/wiffy_t.png" alt="wiffy"><img class="logo-dark"
+                src="images/logos/wiffy_t.png" alt="wiffy"></a>
+          </div>
+          <div class="header-extras">
+            <ul>
+              <li>
+                <div class="p-dropdown">
+                  <a href="#"><i class="icon-globe"></i><span id="langToggle">EN</span></a>
+                  <ul class="p-dropdown-content">
+                    <li><a href="#" id="changeLanguage">English</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="p-t-20 p-b-20">
+      <div class="container">
+        <!-- オフラインの場合のメッセージ -->
+        <div class="text-center">
+          <p id="offlineMessage">インターネット接続がありません。</p>
+        </div>
+
+        <!-- 接続エリア -->
+        <div class="col-lg-12 mb-4 text-center" id="connection">
+          <button id="redirectToNewFqdn" type="button" style="background: none; border: none; padding: 0;">
+            <img id="loginButtonImage" src="images/logos/btn_login_base.png" alt="Login Button" style="height: 50px;">
+          </button>
+          <div class="seperator p-b-0 p-t-0"><i class="icon-chevron-down"></i></div>
+          <p class="mt-3" id="notice-message-1"></p>
+        </div>
+
+        <!-- お知らせエリア -->
+        <div class="accordion" id="notice">
+          <div class="ac-item">
+            <h5 class="ac-title" id="notice-message-0"></h5>
+            <div class="ac-content">
+              <ol>
+                <li id="item-1" class="mt-3"></li>
+                <li id="item-2" class="mt-3"></li>
+                <li id="item-3" class="mt-3"></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ブラウザ確認エリア -->
+        <div id="browser-check" class="mt-4 text-center">
+          <p id="browser-check-text"></p>
+          <button onclick="showConnection()" id="browser-check-button" class="btn btn-light"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer id="footer">
+      <div class="copyright-content">
+        <div class="container">
+          <div class="copyright-text text-center">&copy; wiffy</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-ja" tabindex="-1" role="modal" aria-labelledby="modal-label-ja" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modal-label-ja" class="modal-title">利用規約</h4>
+          <small class="text-muted">最終更新日: 2024年7月27日</small>
+          <button aria-hidden="true" data-bs-dismiss="modal" class="btn-close" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="">第1章 総則</h4>
+              <strong>第1条（規約の適用）</strong>
+              <p>
+                アマランス合同会社（以下「当社」といいます）は、当社の提供するWi-Fiによる無料のインターネット接続サービス（以下「本サービス」といいます）に関して、本サービスを利用する者（以下「利用者」といいます）に対し、以下のとおり利用規約（以下「本規約」といいます）を定めます。
+              </p>
+              <strong>第2条（本規約の範囲及び変更）</strong>
+              <p>本規約は、本サービスの利用に関し当社及び利用者に適用され、当社及び利用者は誠実に本規約を遵守する義務を負います。</p>
+              <p>当社は、利用者の承諾を得ることなく、本規約を変更できるものとします。また、利用者が本規約の変更後に本サービスを利用した場合、利用者は変更後の本規約に同意したものとします。</p>
+              <h4 class="mt-5">第2章 本サービス</h4>
+              <strong>第3条（提供するサービス）</strong>
+              <p>当社は、利用者に対し本規約に従い、インターネット接続を無料で提供します。</p>
+              <p>当社は、本サービスについて、本サービスの内容の全部または一部を変更することができます。</p>
+              <strong>第4条（本サービスの中止・中断）</strong>
+              <p>当社は、次の各号のいずれかに該当する場合、何らの通知を行うことなく本サービスの運営を中止・中断または終了できるものとします。</p>
+              <p>本サービスのシステムの保守または工事を定期的もしくは緊急に行う場合、または本サービスのシステムの障害等やむを得ないとき。</p>
+              <p>災害、暴動、停電、その他の不可抗力により、本サービスの提供が通常どおりできなくなった場合。</p>
+              <p>その他当社が、本サービスの運営上、一時的な中断が必要と判断した場合。</p>
+              <p>当社は、本条に基づく本サービスの中止・中断または終了により、利用者または第三者が被ったいかなる損害についても責任を負わないものとします。</p>
+              <h4 class="mt-5">第3章 利用者の義務等</h4>
+              <strong>第5条（禁止事項）</strong>
+              <p>
+                利用者は、本サービスの利用にあたり、次の各号の行為を行ってはならないものとし、次の各号の行為を行っていると当社が判断した場合は、事前の通知なく、本サービスを解約させ、当該利用者の利用を停止することがあります。
+              </p>
+              <ul>
+                <li>当社または第三者の著作権もしくはその他の権利を侵害する行為、またはこれらを侵害するおそれのある行為。</li>
+                <li>当社または第三者の財産もしくはプライバシーを侵害する行為、またはこれらを侵害するおそれのある行為。</li>
+                <li>前号のほか、当社または第三者に不利益もしくは損害を与える行為、または与えるおそれのある行為。</li>
+                <li>当社または第三者を誹謗中傷する行為。</li>
+                <li>公序良俗に反する行為、またはそのおそれがある行為、もしくは公序良俗に反する情報を第三者に提供する行為。</li>
+                <li>犯罪的行為、または犯罪的行為に結び付く行為、もしくはそれらのおそれのある行為。</li>
+                <li>本サービスを再販売、賃貸するなど、本サービスそのものを営利の目的とする行為。</li>
+                <li>不特定多数に配信する広告・宣伝・勧誘等または詐欺まがいの情報もしくは不快感を抱く、またはそのおそれのある電子メール（嫌がらせメール）を送信する行為。</li>
+                <li>当社または第三者に対しメール受信を妨害する行為、もしくは連鎖的なメール転送を依頼または当該依頼に応じて転送する行為。</li>
+                <li>第三者になりすまして本サービスを利用する行為。</li>
+                <li>本サービスによりアクセス可能な当社または第三者の情報を改ざん、消去する行為。</li>
+                <li>コンピュータウィルス等の有害なプログラムを、本サービスを通じて、または本サービスに関連して使用し、もしくは提供する行為。</li>
+                <li>当社または第三者に迷惑・不利益を及ぼす行為、本サービスに支障を来たすおそれのある行為、本サービスの運営を妨げる行為。</li>
+                <li>本サービスを直接または間接に利用する者の当該利用に対し、重大な支障を与える態様において本サービスを利用する行為。</li>
+                <li>その他、法令に違反する、または違反するおそれのある行為。</li>
+                <li>その他、当社が不適切と判断する行為。</li>
+              </ul>
+              <strong>第6条（自己責任の原則）</strong>
+              <p>利用者は、前条（禁止事項）に該当する利用者の行為によって当社及び第三者に損害が生じた場合、利用者としての資格を喪失した後であっても、損害賠償等すべての法的責任を負うものとします。</p>
+              <p>
+                利用者は、本サービスを利用してアップロードまたはダウンロードした情報もしくは当社に関連して、何らかの損害を被った場合または何らかの法的責任を負う場合においては、自己の責任においてこれを処理し、当社に対して何ら請求もなさず、迷惑をかけないものとします。
+              </p>
+              <strong>第7条（所有権）</strong>
+              <p>本サービスを構成するすべてのプログラム、ソフトウェア、サービス、手続き、商標、商号または第三者が提供するサービスもしくはそれに付随する技術全般は、当社または当該提供者に帰属するものとします。</p>
+              <strong>第8条（著作権）</strong>
+              <p>
+                利用者は、権利者の許諾を得ることなく、いかなる方法においても、本サービスを通じて提供されるあらゆる情報または当社について、著作権法で定める利用者個人の私的利用のための複製の範囲を超えて利用をすることはできないものとします。
+              </p>
+              <p>利用者は、権利者の許諾を得ることなく、いかなる方法においても、本サービスを通じて提供されるあらゆる情報または当社について、第三者をして使用させたり、公開させたりすることはできないものとします。</p>
+              <p>本条の規定に違反して紛争が発生した場合、利用者は、自己の費用と責任において、当該紛争を解決するとともに、当社をいかなる場合においても免責し、当社に対し損害を与えないものとします。</p>
+              <h4 class="mt-5">第4章 個人情報の保護</h4>
+              <strong>第9条（個人情報の利用）</strong>
+              <p>利用者が本サービスを利用する過程において当社が知り得た利用者に関する個人情報に関しては、当社の個人情報保護方針に則り、適正に取り扱います。</p>
+              <h4 class="mt-5">第5章 損害賠償等</h4>
+              <strong>第10条（損害賠償）</strong>
+              <p>利用者が本規約に違反した結果、当社及び第三者が損害を被った場合、その損害を利用者は負担するものとします。</p> 第11条（免責事項）
+              <p>当社は、本サービスの提供に関連して利用者に生じた損害（データの損失、使用機器の故障、利用者同士や第三者とのトラブルなど）について一切の責任を負いません。</p>
+              <p>当社は、本サービスに不具合、障害などによる中断なく本サービスを提供することを保証しません。また、本サービスにいかなる不備があってもそれを回復する義務を負いません。</p>
+              <p>当社は、本サービス及び利用者が使用する通信機器、及びソフトウェア等について、一切動作保証は行わないものとします。</p>
+              <strong>附則</strong>
+              <p>本規約は2015年4月1日より実施するものとします。</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="float-left">
+            <button data-bs-dismiss="modal" class="btn btn-b" type="button">閉じる</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: Modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-en" tabindex="-1" role="modal" aria-labelledby="modal-label-en" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modal-label-en" class="modal-title">Terms of Service</h4>
+          <small class="text-muted">Last updated: July 27, 2024</small>
+          <button aria-hidden="true" data-bs-dismiss="modal" class="btn-close" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Chapter 1 General Provisions</h4>
+              <strong>Article 1 (Application of the Terms)</strong>
+              <p>
+                Amaranth LLC (hereinafter referred to as "the Company") establishes the following terms of service
+                (hereinafter referred to as "these Terms") for the use of its free internet connection service via Wi-Fi
+                (hereinafter referred to as "the Service") by users of the Service (hereinafter referred to as "Users").
+              </p>
+              <strong>Article 2 (Scope and Modification of the Terms)</strong>
+              <p>These Terms apply to both the Company and Users regarding the use of the Service, and both the Company
+                and
+                Users are obliged to adhere to these Terms in good faith.</p>
+              <p>The Company reserves the right to change these Terms without obtaining the consent of Users. If a User
+                uses
+                the Service after the Terms have been changed, the User is deemed to have agreed to the revised Terms.
+              </p>
+              <h4 class="mt-5">Chapter 2 The Service</h4>
+              <strong>Article 3 (Provided Services)</strong>
+              <p>The Company provides free internet access to Users in accordance with these Terms.</p>
+              <p>The Company reserves the right to modify all or part of the content of the Service.</p>
+              <strong>Article 4 (Suspension or Interruption of the Service)</strong>
+              <p>The Company may suspend, interrupt, or terminate the operation of the Service without notice in any of
+                the
+                following cases:</p>
+              <p>When maintenance or construction of the Service's system is conducted on a regular or urgent basis, or
+                when
+                the Service's system experiences a failure or other unavoidable circumstances.</p>
+              <p>If the provision of the Service is disrupted by a disaster, riot, blackout, or other force majeure
+                events.
+              </p>
+              <p>In other cases where the Company deems a temporary interruption of the Service is necessary for
+                operational
+                reasons.</p>
+              <p>The Company shall not be held responsible for any damage suffered by Users or third parties as a result
+                of
+                the suspension, interruption, or termination of the Service under this Article.</p>
+              <h4 class="mt-5">Chapter 3 User Obligations</h4>
+              <strong>Article 5 (Prohibited Acts)</strong>
+              <p>When using the Service, Users shall not engage in any of the following acts. If the Company deems that
+                a User
+                has engaged in any of these acts, the Company may terminate the Service contract and suspend the use of
+                the
+                Service without prior notice:</p>
+              <ul>
+                <li>Acts that infringe upon the copyrights or other rights of the Company or third parties, or acts that
+                  may
+                  infringe upon such rights.</li>
+                <li>Acts that infringe upon the property or privacy of the Company or third parties, or acts that may
+                  infringe
+                  upon such rights.</li>
+                <li>Acts that cause or may cause disadvantage or damage to the Company or third parties.</li>
+                <li>Acts of defaming or slandering the Company or third parties.</li>
+                <li>Acts that violate public order and morals, or acts that may violate public order and morals, or
+                  providing
+                  information that violates public order and morals to third parties.</li>
+                <li>Criminal acts or acts that lead to criminal acts, or acts that may lead to such acts.</li>
+                <li>Acts of reselling or renting the Service for profit.</li>
+                <li>Sending mass advertisements, solicitations, or fraudulent information to an unspecified number of
+                  recipients, or sending emails that are harassing or cause discomfort.</li>
+                <li>Interfering with the reception of emails by the Company or third parties, or requesting chain emails
+                  to be
+                  forwarded or responding to such requests.</li>
+                <li>Impersonating a third party to use the Service.</li>
+                <li>Altering or deleting information accessible through the Service provided by the Company or third
+                  parties.
+                </li>
+                <li>Using or providing harmful programs such as computer viruses through or in connection with the
+                  Service.
+                </li>
+                <li>Engaging in acts that cause or may cause inconvenience or disadvantage to the Company or third
+                  parties,
+                  acts that may interfere with the Service, or acts that obstruct the operation of the Service.</li>
+                <li>Using the Service in a way that significantly hinders the use of the Service by other users, either
+                  directly or indirectly.</li>
+                <li>Acts that violate or may violate laws.</li>
+                <li>Any other acts deemed inappropriate by the Company.</li>
+              </ul>
+              <strong>Article 6 (Principle of Self-Responsibility)</strong>
+              <p>If a User's actions result in damage to the Company or third parties due to a violation of Article 5
+                (Prohibited Acts), the User shall bear all legal responsibility, even after losing their qualification
+                as a
+                User.</p>
+              <p>
+                Users are solely responsible for any damages or legal liabilities arising from information uploaded or
+                downloaded through the Service or related to the Company, and Users shall not make any claims against
+                the
+                Company or cause any inconvenience to the Company.
+              </p>
+              <strong>Article 7 (Ownership)</strong>
+              <p>All programs, software, services, procedures, trademarks, trade names, or services provided by third
+                parties
+                or related technologies that constitute the Service belong to the Company or the provider in question.
+              </p>
+              <strong>Article 8 (Copyright)</strong>
+              <p>
+                Users may not use any information provided through the Service or related to the Company beyond the
+                scope of
+                private use permitted by copyright law without the permission of the rights holder.
+              </p>
+              <p>Users may not allow third parties to use or disclose any information provided through the Service or
+                related
+                to the Company without the permission of the rights holder.</p>
+              <p>In the event of a dispute arising from a violation of this Article, the User shall resolve the dispute
+                at
+                their own expense and responsibility and shall not hold the Company liable in any way, nor cause any
+                damage to
+                the Company.</p>
+              <h4 class="mt-5">Chapter 4 Protection of Personal Information</h4>
+              <strong>Article 9 (Use of Personal Information)</strong>
+              <p>The Company shall appropriately handle any personal information of Users obtained during the use of the
+                Service in accordance with its personal information protection policy.</p>
+              <h4 class="mt-5">Chapter 5 Compensation for Damages</h4>
+              <strong>Article 10 (Compensation for Damages)</strong>
+              <p>If a User violates these Terms and the Company or third parties suffer damages as a result, the User
+                shall
+                bear the cost of such damages.</p>
+              <strong>Article 11 (Disclaimer)</strong>
+              <p>The Company shall not be liable for any damages (such as data loss, equipment malfunction, disputes
+                between
+                Users or with third parties, etc.) that arise in connection with the provision of the Service.</p>
+              <p>The Company does not guarantee that the Service will be provided without interruption due to defects or
+                failures, nor is the Company obligated to remedy any deficiencies in the Service.</p>
+              <p>The Company makes no guarantees regarding the operation of the communication devices or software used
+                by
+                Users with the Service.</p>
+              <strong>Supplementary Provisions</strong>
+              <p>These Terms shall take effect from April 1, 2015.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="float-left">
+            <button data-bs-dismiss="modal" class="btn btn-b" type="button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: Modal -->
+
+  <!-- Plugins -->
+  <script src="js/jquery.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/functions.js"></script>
+  <!-- 認証処理 -->
+  <script src="js/redirect.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      // 'res' パラメータのチェック（Relay2専用）
+      if (urlParams.get('res') === 'success') {
+        window.location.href = 'welcome.html';
+      } else if (urlParams.get('res') === 'failed') {
+        document.getElementById("redirectToNewFqdn").click();
+      }
+    });    
+  </script>
+
+</body>
+
+</html>
