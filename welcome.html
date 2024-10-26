@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <title>wiffy</title>
   <meta name="description" content="wiffy">
@@ -44,7 +45,7 @@
         document.getElementById('notice-message-2').innerHTML = 'You can use it for 15 minutes at a time, up to 3 times a day. Harmful sites will be removed.';
         document.getElementById('notice-message-3').innerHTML = 'To ensure smooth login from next time onwards, turn on Auto-Login. Also, by fixing the Wi-Fi address, you can omit logging into third-party services such as SNS from the next time onwards.';
         document.getElementById('notice-message-4').innerHTML = 'Tap the <i class="fa fa-info-circle"></i> icon of the Wi-Fi name you are connected to, and Set <strong>Privacy</strong> to <strong>Use Device MAC</strong>.';
-        document.getElementById('notice-message-5').innerHTML = 'Tap <i class="fa fa-cog"></i> of the Wi-Fi name you are connected to, and Turn <strong>on</strong> <strong>Auto Login</strong>. Turn <strong>off</strong> <strong>Private Wi-Fi Address</strong>.';        
+        document.getElementById('notice-message-5').innerHTML = 'Tap <i class="fa fa-cog"></i> of the Wi-Fi name you are connected to, and Turn <strong>on</strong> <strong>Auto Login</strong>. Turn <strong>off</strong> <strong>Private Wi-Fi Address</strong>.';
         document.getElementById('offlineMessage').innerHTML = 'No internet connection. Only the following services are available.';
       } else {
         langToggleSpan.innerText = "EN";
@@ -54,12 +55,13 @@
         document.getElementById('notice-message-2').innerHTML = '1回15分、1日3回までご利用いただけます。有害サイトは除去されます。';
         document.getElementById('notice-message-3').innerHTML = '次回からスムーズにログインできるように、自動ログインをオンにしてください。また、Wi-Fiアドレスを固定することで、次回以降SNSなどのサードパーティサービスのログインを省略できます。';
         document.getElementById('notice-message-4').innerHTML = '接続中のWi-Fi名の<i class="fa fa-info-circle"></i>アイコンをタップし、<strong>自動ログイン</strong>を<strong>オン</strong>にします。また、<strong>プライベートWi-Fiアドレス</strong>を<strong>オフ</strong>にします。';
-        document.getElementById('notice-message-5').innerHTML = '接続中のWi-Fi名の<i class="fa fa-cog"></i>をタップし、<strong>プライバシー</strong>を<strong>デバイスMACを使用</strong>に設定します。';        
+        document.getElementById('notice-message-5').innerHTML = '接続中のWi-Fi名の<i class="fa fa-cog"></i>をタップし、<strong>プライバシー</strong>を<strong>デバイスMACを使用</strong>に設定します。';
         document.getElementById('offlineMessage').innerHTML = 'インターネット接続がありません。以下のサービスのみご利用いただけます。';
       }
     });
   </script>
 </head>
+
 <body>
   <div class="body-inner">
     <header id="header" class="header-logo-center">
@@ -91,8 +93,9 @@
         <div class="text-center">
           <div class="call-to-action call-to-action-border">
             <h3 id="notice-message-1"></h3>
-            <p id="notice-message-2"></p>            
-            <a id="redirectButton" class="btn" href="#">OK</a>
+            <p id="notice-message-2"></p>
+            <a id="redirectButton" class="btn btn-outline" href="#">OK</a>
+            <a id="logoutButton" class="btn btn-dark btn-outline" href="http://logout">Logout</a>
           </div>
         </div>
         <p id="notice-message-3"></p>
@@ -104,7 +107,7 @@
           <tr>
             <td width="50%" id="notice-message-4"></td>
             <td width="50%" id="notice-message-5"></td>
-          </tr>          
+          </tr>
         </table>
       </div>
     </section>
@@ -121,7 +124,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/functions.js"></script>
-  <script src="js/redirect.js"></script>  
+  <script src="js/redirect.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // 現在のURLから`called`パラメータを取得
@@ -136,4 +139,5 @@
     });
   </script>
 </body>
+
 </html>
