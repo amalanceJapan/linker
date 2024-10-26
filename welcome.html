@@ -95,9 +95,8 @@
         <div class="text-center">
           <div class="call-to-action call-to-action-border">
             <h3 id="notice-message-1"></h3>
-            <p id="notice-message-2"></p>
-            <!-- 顧客毎に変更！ -->
-            <a class="btn" href="https://lin.ee/k0pBcTr">OK</a>
+            <p id="notice-message-2"></p>            
+            <a id="redirectButton" class="btn" href="#">OK</a>
           </div>
         </div>
         <p id="notice-message-3"></p>
@@ -130,7 +129,19 @@
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/functions.js"></script>
-  <script src="js/redirect.js"></script>
+  <script src="js/redirect.js"></script>  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 現在のURLから`called`パラメータを取得
+      const urlParams = new URLSearchParams(window.location.search);
+      const calledValue = urlParams.get('called');
 
+      // calledパラメータが存在する場合、hrefを動的に設定
+      if (calledValue) {
+        const redirectButton = document.getElementById('redirectButton');
+        redirectButton.href = `https://redirects-wk.info-4eb.workers.dev?called=${calledValue}`;
+      }
+    });
+  </script>
 </body>
 </html>
