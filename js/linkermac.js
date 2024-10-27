@@ -1,7 +1,3 @@
-最終的にリダイレクトするパスが、https://webauth.wifiservice.jp/cnctor/wp-content/plugins/aaa-data-broker/sites/macaddress/login.php となるように。処理を追加して。
-
-このパス /wp-content/plugins/aaa-data-broker/sites/macaddress/login.php を追加する処理が必要です。もちろんこれまでのパラメタはそのまま付与します。
-
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("linkermac").addEventListener("click", function () {
     var currentUrl = window.location.href;
@@ -33,15 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set the new hostname (FQDN)
     newUrl.hostname = newFqdn;
 
-    // Add the "/cnctor" subdirectory to the pathname if it doesn't already exist
-    if (!newUrl.pathname.includes("/cnctor")) {
-      newUrl.pathname = "/cnctor" + newUrl.pathname;
-    }
+    // Add the "/cnctor" and additional path to the pathname
+    newUrl.pathname = "/cnctor/wp-content/plugins/aaa-data-broker/sites/macaddress/login.php";
 
     // If 'lang' parameter is not present, add lang=ja
     if (!urlParams.has('lang')) {
       urlParams.set('lang', 'ja');
-    }    
+    }
 
     // Apply the modified query parameters back to the URL
     newUrl.search = urlParams.toString();
