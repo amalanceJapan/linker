@@ -21,7 +21,12 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
+      var timeLeft = urlParams.get('timeleft') || 900;  // デフォルトは900秒 (15分)
 
+      // 秒を分に変換
+      var timeLeftInMinutes = Math.floor(timeLeft / 60);
+
+      // 言語切り替えリンク設定
       var changeLanguageLink = document.getElementById('changeLanguage');
       var langToggleSpan = document.getElementById('langToggle');
 
@@ -42,7 +47,7 @@
         changeLanguageLink.innerText = "日本語";
 
         document.getElementById('notice-message-1').innerHTML = 'Connected to the Internet!';
-        document.getElementById('notice-message-2').innerHTML = 'You can use it for 15 minutes at a time, up to 3 times a day. Harmful sites will be removed.';
+        document.getElementById('notice-message-2').innerHTML = `You can use it for ${timeLeftInMinutes} minutes at a time, up to 3 times a day. Harmful sites will be removed.`;
         document.getElementById('notice-message-3').innerHTML = 'To ensure smooth login from next time onwards, turn on Auto-Login. Also, by fixing the Wi-Fi address, you can omit logging into third-party services such as SNS from the next time onwards.';
         document.getElementById('notice-message-4').innerHTML = 'Tap the <i class="fa fa-info-circle"></i> icon of the Wi-Fi name you are connected to, and Set <strong>Privacy</strong> to <strong>Use Device MAC</strong>.';
         document.getElementById('notice-message-5').innerHTML = 'Tap <i class="fa fa-cog"></i> of the Wi-Fi name you are connected to, and Turn <strong>on</strong> <strong>Auto Login</strong>. Turn <strong>off</strong> <strong>Private Wi-Fi Address</strong>.';
@@ -52,7 +57,7 @@
         changeLanguageLink.innerText = "English";
 
         document.getElementById('notice-message-1').innerHTML = 'インターネットに接続されました！';
-        document.getElementById('notice-message-2').innerHTML = '1回15分、1日3回までご利用いただけます。有害サイトは除去されます。';
+        document.getElementById('notice-message-2').innerHTML = `1回${timeLeftInMinutes}分、1日3回までご利用いただけます。有害サイトは除去されます。`;
         document.getElementById('notice-message-3').innerHTML = '次回からスムーズにログインできるように、自動ログインをオンにしてください。また、Wi-Fiアドレスを固定することで、次回以降SNSなどのサードパーティサービスのログインを省略できます。';
         document.getElementById('notice-message-4').innerHTML = '接続中のWi-Fi名の<i class="fa fa-info-circle"></i>アイコンをタップし、<strong>自動ログイン</strong>を<strong>オン</strong>にします。また、<strong>プライベートWi-Fiアドレス</strong>を<strong>オフ</strong>にします。';
         document.getElementById('notice-message-5').innerHTML = '接続中のWi-Fi名の<i class="fa fa-cog"></i>をタップし、<strong>プライバシー</strong>を<strong>デバイスMACを使用</strong>に設定します。';
