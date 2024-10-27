@@ -171,7 +171,7 @@
 
         <!-- 接続エリア -->
         <div class="col-lg-12 mb-4 text-center" id="connection">
-          <button id="redirectToNewFqdn" type="button" style="background: none; border: none; padding: 0;">
+          <button id="linkerline" type="button" style="background: none; border: none; padding: 0;">
             <img id="loginButtonImage" src="images/logos/btn_login_base.png" alt="Login Button" style="height: 50px;">
           </button>
           <div class="seperator p-b-0 p-t-0"><i class="icon-chevron-down"></i></div>
@@ -462,7 +462,8 @@
   <script src="js/plugins.js"></script>
   <script src="js/functions.js"></script>
   <!-- 認証処理 -->
-  <script src="js/linker.js"></script>
+  <script src="js/linkerline.js"></script>
+  <script src="js/linkermac.js"></script>
   <!-- 認証後処理 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -472,7 +473,7 @@
         // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (urlParams.get('res') === 'failed') {
-        document.getElementById("redirectToNewFqdn").click();
+        document.getElementById("linkerline").click();
       }
     });
   </script>

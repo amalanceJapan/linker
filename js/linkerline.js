@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("redirectToNewFqdn").addEventListener("click", function () {
+  document.getElementById("linkerline").addEventListener("click", function () {
     var currentUrl = window.location.href;
     var newFqdn = "webauth.wifiservice.jp";
     var newUrl = new URL(currentUrl);
