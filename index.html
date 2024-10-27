@@ -474,7 +474,15 @@
         // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (urlParams.get('res') === 'failed') {
-        document.getElementById("linkerline").click();
+        var lang = urlParams.get('lang');
+        if (lang === 'ja') {
+          alert('認証に失敗しました');
+        } else if (lang === 'en') {
+          alert('Authentication failed');
+        } else {
+          // デフォルトのメッセージ（必要であれば追加）
+          alert('Authentication failed');
+        }
       }
     });
   </script>
