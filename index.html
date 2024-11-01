@@ -627,6 +627,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
+      var res = urlParams.get('res');
+      var uid = urlParams.get('uid');
+
       // 'res' と 'uid' パラメータのチェック（uidが'sessiontimer'を含む場合）
       if (res === 'success' && uid && uid.includes('sessiontimer')) {
         // verification.htmlに現在のすべてのパラメータを付加して遷移
