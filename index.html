@@ -132,6 +132,34 @@
       margin-left: 5px;
       margin-right: 10px;
     }
+
+    .eml {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      /* 左揃え */
+      width: 220px;
+      background-color: #009688;
+      color: #ffffff !important;
+      padding: 5px 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .eml-icon {
+      width: 30px;
+      height: auto;
+      margin-left: 3px;
+      margin-right: 10px;
+    }
+
+    .eml-login-text {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
   </style>
 
   <script>
@@ -279,6 +307,15 @@
               </button>
             </div>
             <div class="col-lg-12 mt-2">
+              <button id="linker2" type="button" data-click="em" class="eml" style="border: none;">
+                
+                <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
+                
+                <span class="login-text">Sign in with Email</span>
+              </button>
+            </div>
+            <!--
+            <div class="col-lg-12 mt-2">
               <button id="linker2" type="button" data-click="gg" class="ggl" style="border: none;">
                 <img src="images/logos/icon_ggl.png" alt="Google icon" class="ggl-icon" />
                 <span class="login-text">Sign in with Google</span>
@@ -290,6 +327,7 @@
                 <span class="login-text">Sign in with Weibo</span>
               </button>
             </div>
+            -->
           </div>
         </div>
 
