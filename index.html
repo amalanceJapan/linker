@@ -624,21 +624,28 @@
   <script src="js/linkermac.js"></script>
   -->
   <!-- 認証後処理 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var urlParams = new URLSearchParams(window.location.search);
-      // 'res' と 'uid' パラメータのチェック
-      if (urlParams.get('res') === 'success' && urlParams.get('uid') === 'sessiontimer') {
-        // verification.htmlに現在のすべてのパラメータを付加して遷移
-        window.location.href = 'verification.html?' + urlParams.toString();
-      } else if (urlParams.get('res') === 'success') {
-        // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
-        window.location.href = 'welcome.html?' + urlParams.toString();
-      } else if (urlParams.get('res') === 'failed') {
-        alert('Authentication failed');
-      }
-    });
-  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var res = urlParams.get('res');
+    var uid = urlParams.get('uid');
+    
+    // デバッグ用：取得したパラメータを確認する
+    console.log("res:", res);
+    console.log("uid:", uid);
+
+    // 'res' と 'uid' パラメータのチェック
+    if (res === 'success' && uid === 'sessiontimer') {
+      // verification.htmlに現在のすべてのパラメータを付加して遷移
+      window.location.href = 'verification.html?' + urlParams.toString();
+    } else if (res === 'success') {
+      // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
+      window.location.href = 'welcome.html?' + urlParams.toString();
+    } else if (res === 'failed') {
+      alert('Authentication failed');
+    }
+  });
+</script>
 
 </body>
 
