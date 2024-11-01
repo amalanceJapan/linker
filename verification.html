@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>wiffy</title>
+  <meta name="description" content="wiffy">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="wiffy" />
+  <!-- icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logos/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logos/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon-16x16.png">
+  <link rel="manifest" href="images/logos/site.webmanifest">
+  <link rel="mask-icon" href="images/logos/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Stylesheets & Fonts -->
+  <link href="css/plugins.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      var timeLeft = urlParams.get('timeleft') || 900;  // デフォルトは900秒 (15分)
+
+      // 秒を分に変換
+      var timeLeftInMinutes = Math.floor(timeLeft / 60);
+
+      // 言語切り替えリンク設定
+      var changeLanguageLink = document.getElementById('changeLanguage');
+      var langToggleSpan = document.getElementById('langToggle');
+
+      // 言語切り替えリンクをクリックした時の処理
+      changeLanguageLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (urlParams.get('lang') === 'en') {
+          urlParams.set('lang', 'ja');
+        } else {
+          urlParams.set('lang', 'en');
+        }
+        window.location.search = urlParams.toString();
+      });
+
+      // 言語に応じてテキストを変更
+      if (urlParams.get('lang') === 'en') {
+        langToggleSpan.innerText = "JA";
+        changeLanguageLink.innerText = "日本語";
+        document.getElementById('notice-message-1').innerHTML = 'A registration guide email has been sent from the sender <mark>no-reply@wifiservice.jp</mark>.';
+        document.getElementById('notice-message-2').innerHTML = 'So, please check your email inbox and complete the registration.';
+        document.getElementById('notice-message-3').innerHTML = 'If you do not see the email in your email inbox, please also check your spam box.';
+      } else {
+        langToggleSpan.innerText = "EN";
+        changeLanguageLink.innerText = "English";
+        document.getElementById('notice-message-1').innerHTML = '送信者 <mark>no-reply@wifiservice.jp</mark> から、登録案内メールを送信しました。';
+        document.getElementById('notice-message-2').innerHTML = 'メール受信箱を確認し、利用登録を完了してください。';
+        document.getElementById('notice-message-3').innerHTML = 'メール受信箱にメールがない場合、迷惑メール箱もご確認ください。';
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="body-inner">
+    <header id="header" class="header-logo-center">
+      <div class="header-inner">
+        <div class="container">
+          <div id="logo">
+            <a href="#">
+              <img class="logo-default" src="images/logos/wiffy_t.png" alt="wiffy">
+              <img class="logo-dark" src="images/logos/wiffy_t.png" alt="wiffy">
+            </a>
+          </div>
+          <div class="header-extras">
+            <ul>
+              <li>
+                <div class="p-dropdown">
+                  <a href="#"><i class="icon-globe"></i><span id="langToggle">EN</span></a>
+                  <ul class="p-dropdown-content">
+                    <li><a href="#" id="changeLanguage">English</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="p-t-0 p-b-50">
+      <div class="container">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="notice-message-1"></li>
+          <li class="list-group-item" id="notice-message-2"></li>
+          <li class="list-group-item" id="notice-message-3"></li>
+        </ul>
+      </div>
+    </section>
+    <footer id="footer" class="">
+      <div class="copyright-content">
+        <div class="container">
+          <div class="copyright-text text-center">&copy; wiffy</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Plugins -->
+  <script src="js/jquery.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/functions.js"></script>  
+  
+</body>
+
+</html>
