@@ -308,9 +308,9 @@
             </div>
             <div class="col-lg-12 mt-2">
               <button id="linker2" type="button" data-click="ml" class="eml" style="border: none;">
-                
+
                 <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
-                
+
                 <span class="login-text">Sign in with Email</span>
               </button>
             </div>
@@ -627,8 +627,11 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
-      // 'res' パラメータのチェック
-      if (urlParams.get('res') === 'success') {
+      // 'res' と 'uid' パラメータのチェック
+      if (urlParams.get('res') === 'success' && urlParams.get('uid') === 'sessiontimer') {
+        // verification.htmlに現在のすべてのパラメータを付加して遷移
+        window.location.href = 'verification.html?' + urlParams.toString();
+      } else if (urlParams.get('res') === 'success') {
         // 現在のすべてのパラメータをwelcome.htmlに付加して遷移
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (urlParams.get('res') === 'failed') {

