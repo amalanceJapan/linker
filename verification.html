@@ -21,6 +21,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
+
+      // ブラウザ言語設定の確認
+      const userLanguage = navigator.language || navigator.userLanguage;
+      if (!urlParams.has('lang') && userLanguage !== 'ja' && userLanguage !== 'ja-JP') {
+        urlParams.set('lang', 'en');
+        window.location.search = urlParams.toString();
+      }
+      
       var timeLeft = urlParams.get('timeleft') || 900;  // デフォルトは900秒 (15分)
 
       // 秒を分に変換

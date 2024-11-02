@@ -674,17 +674,14 @@
         // verification.htmlに現在のすべてのパラメータを付加して遷移
         window.location.href = 'verification.html?' + urlParams.toString();
       } else if (res === 'success' || res === 'already') {
-        // uid に 'facebook', 'google', 'sessiontimer' が含まれる場合、lang=en を付加して welcome.html に遷移
-        if (uid && (uid.includes('facebook') || uid.includes('google') || uid.includes('sessiontimer') || uid.includes('client'))) {
-          urlParams.set('lang', 'en');
-        }
-        // welcome.html に現在のすべてのパラメータを付加して遷移
+        // welcome.html に現在のすべてのパラメータを付加して遷移、ただし 'lang' パラメータを削除
+        urlParams.delete('lang');
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
         alert('Authentication failed');
       }
     });
-  </script>
+</script>
 
 </body>
 
