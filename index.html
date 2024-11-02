@@ -105,7 +105,8 @@
       margin-left: 5px;
       margin-right: 10px;
     }
-/*
+
+    /*
     .wbo {
       display: inline-flex;
       align-items: center;
@@ -191,6 +192,13 @@
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
 
+      // ブラウザ言語設定の確認
+      const userLanguage = navigator.language || navigator.userLanguage;
+      if (!urlParams.has('lang') && userLanguage !== 'ja' && userLanguage !== 'ja-JP') {
+        urlParams.set('lang', 'en');
+        window.location.search = urlParams.toString();
+      }
+
       // copied=trueが含まれている場合、connectionを表示し、noticeとbrowser-checkを非表示にする
       if (urlParams.get('copied') === 'true') {
         document.getElementById('connection').style.display = 'block';
@@ -238,7 +246,6 @@
         document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてパスワードをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>一旦、インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
         document.getElementById('item-3').innerHTML = '<p>ホーム画面に戻り、Safariなどの標準ブラウザを開き、先ほどコピーした<strong>パスワードをアドレスバーにペーストし</strong>、ページを開きます。</p>';
-
       }
 
       // 言語切り替えリンクをクリックした時の処理
