@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var timestamp = Date.now();
         var redirectUrl = "http://x.wiffy.me/";
-        var redirectUrlWithTimestamp = redirectUrl + "?ts=" + timestamp;
 
-        window.location.href = redirectUrlWithTimestamp;
+        // 必要なパラメータをURLに追加
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp + "&res=retry";
+
+        window.location.href = redirectUrlWithParams;
         return;
       }
 
