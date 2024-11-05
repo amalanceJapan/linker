@@ -18,15 +18,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // resパラメータが存在しないか、notyetではない場合アラート表示後リダイレクト
       if (!urlParams.has('res') || urlParams.get('res') !== 'notyet') {
-        
-        var timestamp = Date.now();
-        var redirectUrl = "http://x.wiffy.me/";
 
-        // 必要なパラメータをURLに追加
-        var redirectUrlWithTimestamp = redirectUrl + "?ts=" + timestamp;
+        setTimeout(function () {
+          var timestamp = Date.now();
+          var redirectUrl = "http://x.wiffy.me/";
 
-        window.location.href = redirectUrlWithParams;
-        return;
+          // tsを追加したURLを生成
+          var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+
+          // tsを含むURLにリダイレクト
+          window.location.href = redirectUrlWithParams;
+        }, 1000); // 1秒後に実行
       }
 
       // Force HTTPS if the protocol is HTTP
