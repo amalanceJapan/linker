@@ -18,13 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // resパラメータが存在しないか、notyetではない場合アラート表示後リダイレクト
       if (!urlParams.has('res') || urlParams.get('res') !== 'notyet') {
-        alert("再処理が必要です｜Please retry");
-
+        
         var timestamp = Date.now();
         var redirectUrl = "http://x.wiffy.me/";
 
         // 必要なパラメータをURLに追加
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp + "&res=retry";
+        var redirectUrlWithTimestamp = redirectUrl + "?ts=" + timestamp;
 
         window.location.href = redirectUrlWithParams;
         return;
