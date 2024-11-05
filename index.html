@@ -678,16 +678,20 @@
         urlParams.delete('lang');
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
-        
+        alert('Authentication failed. Please retry.');
+
         setTimeout(function () {
           var timestamp = Date.now();
           var redirectUrl = "http://x.wiffy.me/";
-          var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
 
+          // 新しいURLパラメータを作成し、tsのみを追加
+          var urlParams = new URLSearchParams();
+          urlParams.set("ts", timestamp);
+
+          // tsのみのURLにリダイレクト
+          var redirectUrlWithParams = redirectUrl + "?" + urlParams.toString();
           window.location.href = redirectUrlWithParams;
         }, 1000); // 1秒後に実行
-        
-        alert('Authentication failed. Please retry.');
       }
     });
   </script>
