@@ -667,16 +667,16 @@
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
       var res = urlParams.get('res');
-
+  
       // resが存在しない場合に即座にリダイレクトを実行
       if (!res) {
         var timestamp = Date.now();
         var redirectUrl = "http://x.wiffy.me/";
         var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-        window.location.href = redirectUrlWithParams;
+        window.location.replace(redirectUrlWithParams); // replaceを使用してリダイレクト
         return; // リダイレクトが実行された場合、以下の処理を停止
       }
-
+  
       // その他の処理を続行
       var uid = urlParams.get('uid');
       if (res === 'success' && uid && uid.includes('sessiontimer')) {
@@ -690,7 +690,7 @@
         window.location.href = redirectUrl + "?ts=" + Date.now();
       }
     });
-  </script>
+  </script>  
 
 </body>
 
