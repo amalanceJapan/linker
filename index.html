@@ -1,3 +1,5 @@
+// resが存在しない場合に即座にリダイレクトを実行 の部分ですが、このページが呼び出された際、真っ先に判定してほしい。
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -667,35 +669,30 @@
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
       var res = urlParams.get('res');
-      var uid = urlParams.get('uid');
 
-      // 'res' と 'uid' パラメータのチェック（uidが'sessiontimer'を含む場合）
+      // resが存在しない場合に即座にリダイレクトを実行
+      if (!res) {
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.href = redirectUrlWithParams;
+        return; // リダイレクトが実行された場合、以下の処理を停止
+      }
+
+      // その他の処理を続行
+      var uid = urlParams.get('uid');
       if (res === 'success' && uid && uid.includes('sessiontimer')) {
-        // verification.htmlに現在のすべてのパラメータを付加して遷移
         window.location.href = 'verification.html?' + urlParams.toString();
       } else if (res === 'success' || res === 'already') {
-        // welcome.html に現在のすべてのパラメータを付加して遷移、ただし 'lang' パラメータを削除
         urlParams.delete('lang');
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
         alert('Authentication failed. Please retry.');
-
-        // 即座にリダイレクト
-        var timestamp = Date.now();
         var redirectUrl = "http://x.wiffy.me/";
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-        window.location.href = redirectUrlWithParams;
-      } else {
-        // resが存在しない場合に即座にリダイレクトを実行
-        var timestamp = Date.now();
-        var redirectUrl = "http://x.wiffy.me/";
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-        window.location.href = redirectUrlWithParams;
+        window.location.href = redirectUrl + "?ts=" + Date.now();
       }
-
     });
   </script>
-
 
 </body>
 
