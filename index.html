@@ -680,20 +680,22 @@
       } else if (res === 'failed') {
         alert('Authentication failed. Please retry.');
 
-        setTimeout(function () {
-          var timestamp = Date.now();
-          var redirectUrl = "http://x.wiffy.me/";
-
-          // tsを追加したURLを生成
-          var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-
-          // tsを含むURLにリダイレクト
-          window.location.href = redirectUrlWithParams;
-        }, 1000); // 1秒後に実行
+        // 即座にリダイレクト
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.href = redirectUrlWithParams;
+      } else {
+        // resが存在しない場合に即座にリダイレクトを実行
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.href = redirectUrlWithParams;
       }
 
     });
   </script>
+
 
 </body>
 

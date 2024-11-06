@@ -6,23 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   buttons.forEach(button => {
     button.addEventListener("click", function () {
       // ボタンの `data-click` 属性からパラメータ値を取得
-      const clickParam = button.getAttribute("data-click");
+      const clickParam = button.getAttribute("data-click");      
 
-      // resパラメータが存在しないか、notyetではない場合アラート表示後リダイレクト
-      if (!urlParams.has('res') || urlParams.get('res') !== 'notyet') {
-
-        setTimeout(function () {
-          var timestamp = Date.now();
-          var redirectUrl = "http://x.wiffy.me/";
-
-          // tsを追加したURLを生成
-          var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-
-          // tsを含むURLにリダイレクト
-          window.location.href = redirectUrlWithParams;
-        }, 1000); // 1秒後に実行
-      }
-      
       var currentUrl = window.location.href;
       var newFqdn = "webauth.wifiservice.jp";
       var newUrl = new URL(currentUrl);
