@@ -1,7 +1,22 @@
+パラメタ ?lang=ja（ブラウザ判定によるもの） は付いてきますが、QRからの表示の際、// resが存在しない場合に即座にリダイレクトを実行 が実行されないようです。
+
 <!DOCTYPE html>
 <html lang="">
 
 <head>
+  <!-- resパラメータのチェックとリダイレクト -->
+  <script>
+    // resが存在しない場合に即座にリダイレクトを実行
+    var urlParams = new URLSearchParams(window.location.search);
+    var res = urlParams.get('res');
+
+    if (!res) {
+      var timestamp = Date.now();
+      var redirectUrl = "http://x.wiffy.me/";
+      var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+      window.location.replace(redirectUrlWithParams); // リダイレクトを即座に実行
+    }
+  </script>
   <title>wiffy</title>
   <meta name="description" content="wiffy">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -667,17 +682,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
       var res = urlParams.get('res');
-  
-      // resが存在しない場合に即座にリダイレクトを実行
-      if (!res) {
-        var timestamp = Date.now();
-        var redirectUrl = "http://x.wiffy.me/";
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-        window.location.replace(redirectUrlWithParams); // replaceを使用してリダイレクト
-        return; // リダイレクトが実行された場合、以下の処理を停止
-      }
-  
-      // その他の処理を続行
+            
       var uid = urlParams.get('uid');
       if (res === 'success' && uid && uid.includes('sessiontimer')) {
         window.location.href = 'verification.html?' + urlParams.toString();
@@ -690,7 +695,7 @@
         window.location.href = redirectUrl + "?ts=" + Date.now();
       }
     });
-  </script>  
+  </script>
 
 </body>
 
