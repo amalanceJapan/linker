@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
       newUrl.hostname = newFqdn;
 
       // Add the "/cnctor" subdirectory to the pathname if it doesn't already exist
-      if (!newUrl.pathname.includes("/cnctor")) {
-        newUrl.pathname = "/cnctor" + newUrl.pathname;
+      if (!newUrl.pathname.includes("/demo")) {
+        newUrl.pathname = "/demo" + newUrl.pathname;
       }
 
       // If 'lang' parameter is not present, add lang=ja
