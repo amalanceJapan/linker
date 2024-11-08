@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const clickParam = button.getAttribute("data-click");      
 
       var currentUrl = window.location.href;
-      var newFqdn = "webauth.wifiservice.jp";
+      var newFqdn = "splashportal.com";
       var newUrl = new URL(currentUrl);
       var urlParams = new URLSearchParams(newUrl.search);
 
