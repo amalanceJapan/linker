@@ -277,10 +277,12 @@
         document.getElementById('linker2').style.display = 'inline-flex';
         document.getElementById('linker3').style.display = 'inline-flex';
         document.getElementById('linker4').style.display = 'inline-flex';
+        document.getElementById('linker5').style.display = 'inline-flex';
       } else {
         document.getElementById('linker2').style.display = 'none';
         document.getElementById('linker3').style.display = 'none';
         document.getElementById('linker4').style.display = 'none';
+        document.getElementById('linker5').style.display = 'none';
       }
 
     });
@@ -658,10 +660,8 @@
         </div>
         <div class="modal-footer">
           <div class="float-left">
-            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>
-            <!--
-            <button type="button" class="btn btn-b" id="linkermac">Get online</button>
-            -->
+            <button id="linker5" type="button" data-click="ml" class="eml" style="border: none;">Get online</button>
+            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>            
           </div>
         </div>
       </div>
