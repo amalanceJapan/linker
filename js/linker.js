@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const clickParam = button.getAttribute("data-click");      
 
       var currentUrl = window.location.href;
-      var newFqdn = "splashportal.com";
+      var newFqdn = "webauth.wifiservice.jp";
       var newUrl = new URL(currentUrl);
       var urlParams = new URLSearchParams(newUrl.search);
 
@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
       newUrl.hostname = newFqdn;
 
       // Add the "/cnctor" subdirectory to the pathname if it doesn't already exist
-      if (!newUrl.pathname.includes("/demo")) {
-        newUrl.pathname = "/demo" + newUrl.pathname;
+      if (!newUrl.pathname.includes("/cnctor")) {
+        newUrl.pathname = "/cnctor" + newUrl.pathname;
       }
 
       // If 'lang' parameter is not present, add lang=ja
