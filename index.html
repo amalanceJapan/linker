@@ -661,7 +661,7 @@
         <div class="modal-footer">
           <div class="float-left">
             <button id="linker5" type="button" data-click="ma" class="btn btn-b">Get online</button>
-            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>            
+            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>
           </div>
         </div>
       </div>
@@ -680,7 +680,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
       var res = urlParams.get('res');
-            
+
       var uid = urlParams.get('uid');
       if (res === 'success' && uid && uid.includes('sessiontimer')) {
         window.location.href = 'verification.html?' + urlParams.toString();
@@ -688,9 +688,15 @@
         urlParams.delete('lang');
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
-        alert('Authentication failed. Please retry.');
-        var redirectUrl = "http://x.wiffy.me/";
-        window.location.href = redirectUrl + "?ts=" + Date.now();
+        var retryButton = document.getElementById('linker1');
+        if (retryButton) {
+          retryButton.click(); // ボタンの自動クリック
+        }
+        /*
+          alert('Authentication failed. Please retry.');
+          var redirectUrl = "http://x.wiffy.me/";
+          window.location.href = redirectUrl + "?ts=" + Date.now();
+        */
       }
     });
   </script>
