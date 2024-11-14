@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // 各ボタンにイベントリスナーを追加
   buttons.forEach(button => {
     button.addEventListener("click", function () {
+      // オンラインかどうかを確認
+      if (!navigator.onLine) {
+        // オフラインの場合にアラートを表示
+        alert("インターネットに接続されていません。接続を確認してください。");
+        return; // リダイレクト処理を停止
+      }
+
       // ボタンの `data-click` 属性からパラメータ値を取得
       const clickParam = button.getAttribute("data-click");
 
@@ -32,29 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
         newUrl.pathname = "/cnctor" + newUrl.pathname;
       }
 
-      // If 'lang' parameter is not present, add lang=ja
-      if (!urlParams.has('lang')) {
-        urlParams.set('lang', 'ja');
-      }
-
       // Apply the modified query parameters back to the URL
       newUrl.search = urlParams.toString();
 
-      // ドメイン自体にアクセスできるか確認
-      fetch(`https://${newFqdn}`, { method: 'HEAD' })
-        .then(response => {
-          if (response.ok) {
-            // ドメインにアクセス可能であればリダイレクト
-            window.location.href = newUrl.href;
-          } else {
-            // ドメインがアクセスできない場合
-            alert("The service is undergoing maintenance. Please try again later.");
-          }
-        })
-        .catch(() => {
-          // エラーハンドリング
-          alert("The service is undergoing maintenance. Please try again later.");
-        });
+      // インターネット接続が確認できた場合のみリダイレクト
+      window.location.href = newUrl.href;
     });
   });
 });
