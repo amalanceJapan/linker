@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   buttons.forEach(button => {
     button.addEventListener("click", function () {
       // ボタンの `data-click` 属性からパラメータ値を取得
-      const clickParam = button.getAttribute("data-click");      
+      const clickParam = button.getAttribute("data-click");
 
       var currentUrl = window.location.href;
       var newFqdn = "webauth.wifiservice.jp";
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // `click` パラメータにボタン固有の値を設定
       urlParams.set('click', clickParam);
-      
+
       // Force HTTPS if the protocol is HTTP
       if (newUrl.protocol === "http:") {
         newUrl.protocol = "https:";
@@ -40,8 +40,21 @@ document.addEventListener("DOMContentLoaded", function () {
       // Apply the modified query parameters back to the URL
       newUrl.search = urlParams.toString();
 
-      // Redirect to the modified URL
-      window.location.href = newUrl.href;
+      // URLにアクセスできるか確認し、エラー時にはアラートを表示
+      fetch(newUrl.href, { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            // URLがアクセス可能ならリダイレクト
+            window.location.href = newUrl.href;
+          } else {
+            // アクセスできない場合
+            alert("The service is undergoing maintenance. Please try again later.");
+          }
+        })
+        .catch(() => {
+          // エラーハンドリング
+          alert("The service is undergoing maintenance. Please try again later.");
+        });
     });
   });
 });
