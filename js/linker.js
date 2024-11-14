@@ -40,14 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // Apply the modified query parameters back to the URL
       newUrl.search = urlParams.toString();
 
-      // URLにアクセスできるか確認し、エラー時にはアラートを表示
-      fetch(newUrl.href, { method: 'HEAD' })
+      // ドメイン自体にアクセスできるか確認
+      fetch(`https://${newFqdn}`, { method: 'HEAD' })
         .then(response => {
           if (response.ok) {
-            // URLがアクセス可能ならリダイレクト
+            // ドメインにアクセス可能であればリダイレクト
             window.location.href = newUrl.href;
           } else {
-            // アクセスできない場合
+            // ドメインがアクセスできない場合
             alert("The service is undergoing maintenance. Please try again later.");
           }
         })
