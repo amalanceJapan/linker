@@ -237,8 +237,10 @@
       if (urlParams.get('lang') === 'en') {
         langToggleSpan.innerText = "JA";
         changeLanguageLink.innerText = "日本語";
-        document.getElementById('browser-check-title').textContent = 'Do you want to force the content to appear?';
+        document.getElementById('browser-check-title').textContent = 'Is this page already open in a standard browser?';
+        /*
         document.getElementById('browser-check-notice').textContent = 'Is this page already open in a standard browser?';
+        */
         document.getElementById('browser-check-button').textContent = 'Yes';
         document.getElementById('notice-message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
         document.getElementById('notice-message-1').innerHTML = 'You can use the Internet. By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
@@ -250,8 +252,10 @@
       } else {
         langToggleSpan.innerText = "EN";
         changeLanguageLink.innerText = "English";
-        document.getElementById('browser-check-title').textContent = 'コンテンツを強制的に表示しますか？';
+        document.getElementById('browser-check-title').textContent = 'このページはすでに標準ブラウザで開かれていますか？';
+        /*
         document.getElementById('browser-check-notice').textContent = 'このページはすでに標準ブラウザで開かれていますか？';
+        */
         document.getElementById('browser-check-button').textContent = 'はい';
         document.getElementById('notice-message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
         document.getElementById('notice-message-1').innerHTML = 'インターネットをご利用いただけます。本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
@@ -407,7 +411,9 @@
           <div class="ac-item">
             <h5 class="ac-title" id="browser-check-title"></h5>
             <div class="ac-content">
+              <!--
               <p class="" id="browser-check-notice"></p>
+              -->
               <button onclick="showConnection()" id="browser-check-button" class="btn"></button>
             </div>
           </div>
