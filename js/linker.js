@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(() => {
           // 接続エラーの場合にアラートを表示
-          alert("インターネットに接続されていないため、指定のURLにアクセスできません。接続を確認してください。");
+          alert("Checking the connection status. Retrying if necessary.");
         });
     });
   });
