@@ -201,6 +201,44 @@
     }
   </style>
 
+  <style>
+    /* ローディング画面のスタイル */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      /* 半透明の黒背景 */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    /* ローディングスピナー */
+    .loading-spinner {
+      border: 8px solid #f3f3f3;
+      /* ライトグレー */
+      border-top: 8px solid #3498db;
+      /* 青 */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var urlParams = new URLSearchParams(window.location.search);
@@ -218,7 +256,7 @@
         document.getElementById('notice').style.display = 'none';
         document.getElementById('browser-check').style.display = 'none';
       }
-      
+
       var langToggleSpan = document.getElementById('langToggle');
       var changeLanguageLink = document.getElementById('changeLanguage');
 
@@ -239,7 +277,7 @@
         document.getElementById('browser-check-button').textContent = 'Yes';
         document.getElementById('notice-message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
         document.getElementById('notice-message-1').innerHTML = 'You can use the Internet. By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
-        
+
         document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the password.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>Use without connecting to the Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without connecting to the Internet</strong></span>.</p></div><div class="col-lg-6"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
         document.getElementById('item-3').innerHTML = '<p>After returning to the home screen, open the standard browser like Chrome or Safari, <strong>paste the copied password into the address bar</strong>, and open the page.</p>';
@@ -254,7 +292,7 @@
         document.getElementById('browser-check-button').textContent = 'はい';
         document.getElementById('notice-message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
         document.getElementById('notice-message-1').innerHTML = 'インターネットをご利用いただけます。本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
-        
+
         document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてパスワードをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>一旦、インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
         document.getElementById('item-3').innerHTML = '<p>ホーム画面に戻り、Safariなどの標準ブラウザを開き、先ほどコピーした<strong>パスワードをアドレスバーにペーストし</strong>、ページを開きます。</p>';
@@ -665,6 +703,12 @@
   </div>
   <!-- end: Modal -->
 
+  <!-- ローディング画面 -->
+  <div id="loading-screen" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>処理中です。お待ちください...</p>
+  </div>
+
   <!-- Plugins -->
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
@@ -684,15 +728,14 @@
         urlParams.delete('lang');
         window.location.href = 'welcome.html?' + urlParams.toString();
       } else if (res === 'failed') {
+        // ローディング画面を表示
+        var loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'flex';
+        // ボタンの自動クリック
         var retryButton = document.getElementById('linker1');
         if (retryButton) {
-          retryButton.click(); // ボタンの自動クリック
+          retryButton.click();
         }
-        /*
-          alert('Authentication failed. Please retry.');
-          var redirectUrl = "http://x.wiffy.me/";
-          window.location.href = redirectUrl + "?ts=" + Date.now();
-        */
       }
     });
   </script>
