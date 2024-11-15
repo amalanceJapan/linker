@@ -143,25 +143,16 @@
   <script src="js/redirect.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // 現在のURLからパラメータを取得
+      // 現在のURLから`called`パラメータを取得
       const urlParams = new URLSearchParams(window.location.search);
-      const vendor = urlParams.get('vendor');
-      let calledValue;
-
-      // vendorパラメータが'relay2'の場合は'apmac'を取得し、それ以外は'called'を取得
-      if (vendor === 'relay2') {
-        calledValue = urlParams.get('apmac');
-      } else {
-        calledValue = urlParams.get('called');
-      }
-
+      const calledValue = urlParams.get('called');
       const redirectButton = document.getElementById('redirectButton');
 
-      // calledValueが存在する場合、hrefを動的に設定
+      // calledパラメータが存在する場合、hrefを動的に設定
       if (calledValue) {
         redirectButton.href = `https://wk.wiffy.me?called=${calledValue}`;
       } else {
-        // calledValueが存在しない場合、ボタンを非表示にする
+        // calledパラメータが存在しない場合、ボタンを非表示にする
         redirectButton.style.display = 'none';
       }
     });
