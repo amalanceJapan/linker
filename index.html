@@ -275,13 +275,7 @@
       }
 
       var langToggleSpan = document.getElementById('langToggle');
-      var changeLanguageLink = document.getElementById('changeLanguage');
-
-      // 初回ロード時に言語パラメータがなければデフォルト設定
-      if (!urlParams.has('lang')) {
-        urlParams.set('lang', 'ja');
-        window.location.search = urlParams.toString();
-      }
+      var changeLanguageLink = document.getElementById('changeLanguage');      
 
       // 言語パラメータが'en'なら英語に設定
       if (urlParams.get('lang') === 'en') {
