@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 各ボタンにイベントリスナーを追加
   buttons.forEach(button => {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", async function () {
       const clickParam = button.getAttribute("data-click");
 
+      // 現在のURLと初期設定
       var currentUrl = window.location.href;
       var newFqdn = "webauth.wifiservice.jp";
       var newUrl = new URL(currentUrl);
@@ -15,23 +16,57 @@ document.addEventListener("DOMContentLoaded", function () {
       // `click` パラメータにボタン固有の値を設定
       urlParams.set('click', clickParam);
 
-      // Force HTTPS if the protocol is HTTP
+      // 呼び出し元の`vendor`パラメータを取得
+      const vendorParam = urlParams.get('vendor');
+      let calledParam = "";
+
+      // `vendor`の値に応じて`called`または`apmac`の値を設定
+      if (vendorParam === "relay2") {
+        calledParam = urlParams.get('apmac');
+      } else {
+        calledParam = urlParams.get('called');
+      }
+
+      if (!calledParam) {
+        console.error("Required parameter `called` or `apmac` is missing.");
+        return;
+      }
+
+      // Cloudflare Workerで指定されたKVの値を取得するAPIエンドポイント
+      const kvFetchUrl = `https://sd.wiffy.me/getSubdir?called=${calledParam}`;
+      let subdir = "";
+
+      try {
+        const response = await fetch(kvFetchUrl);
+        if (response.ok) {
+          const data = await response.json();
+          subdir = data.subdir;
+        } else {
+          console.error("Failed to fetch KV value:", response.statusText);
+          return;
+        }
+      } catch (error) {
+        console.error("Error fetching KV value:", error);
+        return;
+      }
+
+      // HTTPSに強制する
       if (newUrl.protocol === "http:") {
         newUrl.protocol = "https:";
       }
 
-      // Remove any port number
+      // ポート番号を削除
       newUrl.port = "";
 
-      // Set the new hostname (FQDN)
+      // 新しいホスト名（FQDN）を設定
       newUrl.hostname = newFqdn;
 
-      // Add the "/cnctor" subdirectory to the pathname if it doesn't already exist
-      if (!newUrl.pathname.includes("/cnctor")) {
-        newUrl.pathname = "/cnctor" + newUrl.pathname;
+      // KVで取得したサブディレクトリを設定
+      if (subdir && !newUrl.pathname.includes(subdir)) {
+        newUrl.pathname = `/${subdir}` + newUrl.pathname;
       }
 
-      // Apply the modified query parameters back to the URL
+      // 修正したクエリパラメータをURLに適用
       newUrl.search = urlParams.toString();
 
       // リダイレクトを実行
