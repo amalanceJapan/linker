@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ボタンリストを取得
+  // 認証ボタンリストを取得
   const buttons = document.querySelectorAll("button[data-click]");
 
   // 各ボタンにイベントリスナーを追加
