@@ -275,7 +275,7 @@
       }
 
       var langToggleSpan = document.getElementById('langToggle');
-      var changeLanguageLink = document.getElementById('changeLanguage');      
+      var changeLanguageLink = document.getElementById('changeLanguage');
 
       // 言語パラメータが'en'なら英語に設定
       if (urlParams.get('lang') === 'en') {
@@ -399,26 +399,26 @@
               </button>
             </div>
             <div class="col-lg-12 mt-2">
+              <button id="linker3" type="button" data-click="ml" class="eml" style="border: none;">
+
+                <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
+
+                <span class="login-text">Sign in with Email</span>
+              </button>
+            </div>
+            <!--
+            <div class="col-lg-12 mt-2">
               <button id="linker2" type="button" data-click="gg" class="ggl" style="border: none;">
                 <img src="images/logos/icon_ggl.png" alt="Google icon" class="ggl-icon" />
                 <span class="login-text">Sign in with Google</span>
               </button>
             </div>
-            <!--
             <div class="col-lg-12 mt-2">
               <button id="linker4" type="button" data-click="fb" class="fbk" style="border: none;">
 
                 <img src="images/logos/icon_fbk.png" alt="Email icon" class="fbk-icon" />
 
                 <span class="login-text">Sign in with Facebook</span>
-              </button>
-            </div>
-            <div class="col-lg-12 mt-2">
-              <button id="linker3" type="button" data-click="ml" class="eml" style="border: none;">
-
-                <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
-
-                <span class="login-text">Sign in with Email</span>
               </button>
             </div>            
             <div class="col-lg-12 mt-2">
@@ -716,7 +716,7 @@
 
   <!-- ローディング画面 -->
   <div id="loading-screen" style="display: none;">
-    <div class="loading-spinner"></div>    
+    <div class="loading-spinner"></div>
   </div>
 
   <!-- Plugins -->
