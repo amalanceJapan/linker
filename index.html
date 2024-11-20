@@ -320,17 +320,11 @@
         window.location.search = urlParams.toString();
       });
 
-      // 'lang' パラメータが 'en' の場合にのみ #linker2 と #linker3 ボタンを表示
+      // 'lang' パラメータが 'en' の場合にのみ #linker9 ボタンを表示
       if (urlParams.get('lang') === 'en') {
-        document.getElementById('linker2').style.display = 'inline-flex';
-        document.getElementById('linker3').style.display = 'inline-flex';
-        document.getElementById('linker4').style.display = 'inline-flex';
-        document.getElementById('linker5').style.display = 'inline-flex';
+        document.getElementById('linker9').style.display = 'inline-flex';        
       } else {
-        document.getElementById('linker2').style.display = 'none';
-        document.getElementById('linker3').style.display = 'none';
-        document.getElementById('linker4').style.display = 'none';
-        document.getElementById('linker5').style.display = 'none';
+        document.getElementById('linker9').style.display = 'none';        
       }
 
     });
@@ -399,7 +393,7 @@
               </button>
             </div>
             <div class="col-lg-12 mt-2">
-              <button id="linker4" type="button" data-click="ml" class="eml" style="border: none;">
+              <button id="linker9" type="button" data-click="ml" class="eml" style="border: none;">
                 <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
                 <span class="login-text">Sign in with Email</span>
               </button>
@@ -416,13 +410,7 @@
                 <img src="images/logos/icon_fbk.png" alt="Email icon" class="fbk-icon" />
                 <span class="login-text">Sign in with Facebook</span>
               </button>
-            </div>
-            <div class="col-lg-12 mt-2">
-              <button id="linker3" type="button" data-click="wb" class="wbo" style="border: none;">
-                <img src="images/logos/icon_wbo.png" alt="Google icon" class="wbo-icon" />
-                <span class="login-text">Sign in with Weibo</span>
-              </button>
-            </div>
+            </div>            
             -->
           </div>
         </div>
