@@ -20,17 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
         calledParam = urlParams.get("called");
       }
 
+      // calledParam が存在しない場合の処理
       if (!calledParam) {
-        alert("Required parameter missing, please retry.");
-  
+        // 言語パラメータが 'en' なら英語メッセージ、それ以外なら日本語メッセージを表示
+        if (urlParams.get('lang') === 'en') {
+          alert("Required parameter missing, please retry.");
+        } else {
+          alert("必要なパラメタが足りません。リトライしてください。");
+        }
+
         // リダイレクト処理
-        var timestamp = Date.now();
-        var redirectUrl = "http://x.wiffy.me/";
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-        window.location.replace(redirectUrlWithParams);
+        var timestamp = Date.now(); // 現在のタイムスタンプを取得
+        var redirectUrl = "http://x.wiffy.me/"; // リダイレクト先のURL
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp; // タイムスタンプをクエリパラメータとして追加
+        window.location.replace(redirectUrlWithParams); // リダイレクトを実行
         return; // 処理を終了
       }
-
+      
       const kvFetchUrl = `https://sd.wiffy.me/getSubdir?called=${calledParam}`;
       let subdir = "";
 
