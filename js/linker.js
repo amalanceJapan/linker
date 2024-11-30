@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.replace(redirectUrlWithParams); // リダイレクトを実行
         return; // 処理を終了
       }
-      
+
       const kvFetchUrl = `https://sd.wiffy.me/getSubdir?called=${calledParam}`;
       let subdir = "";
 
@@ -57,8 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
         subdir = data.subdir;
 
-        if (!subdir) {
-          alert("No subdirectory returned from API.");
+        if (!subdir) {          
+          if (urlParams.get('lang') === 'en') {
+            alert("No subdirectory returned from API.");
+          } else {
+            alert("ターゲットディレクトリが返却されませんでした。");
+          }        
           return;
         }
 
@@ -77,7 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = newUrl.href;
       } catch (error) {
         console.error("Fetch error:", error);
-        alert("An error occurred while contacting the server.");
+        if (urlParams.get('lang') === 'en') {
+          alert("An error occurred while contacting the server.");
+        } else {
+          alert("認証サーバーへの接続中にエラーが発生しました。");
+        }        
       }
     });
   });
