@@ -2,38 +2,6 @@
 <html lang="">
 
 <head>
-  <!-- インターネット接続確認関数 -->
-  <script>
-    async function checkInternetConnection() {
-      try {
-        // 外部コンテンツへの到達をチェック
-        const response = await fetch("https://webauth.wifiservice.jp/", {
-          method: "HEAD",
-          mode: "no-cors", // クロスオリジン制限を回避
-          cache: "no-store", // キャッシュを使用せず、最新の結果を取得
-        });
-
-        // エラーが発生しない場合、接続成功
-        if (response) {
-          console.log("Internet is available.");
-          return true;
-        }
-      } catch (error) {
-        console.error("Internet is unavailable.", error);
-      }
-
-      return false;
-    }
-
-    // DOMContentLoaded後に実行
-    document.addEventListener('DOMContentLoaded', async function () {
-      const isConnected = await checkInternetConnection();
-      if (!isConnected) {
-        alert("Internet is currently unavailable.");
-      }
-    });
-  </script>
-
   <!-- resパラメータのチェックとリダイレクト -->
   <script>
     // resが存在しない場合に即座にリダイレクトを実行
@@ -740,23 +708,63 @@
   <script src="js/functions.js"></script>
   <!-- 認証処理 -->
   <script src="js/linker.js"></script>
-  <!-- 認証後処理 -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    // インターネット接続確認関数
+    async function checkInternetConnection() {
+      try {
+        // 外部リソースへのHEADリクエスト
+        const response = await fetch("https://webauth.wifiservice.jp/", {
+          method: "HEAD",
+          mode: "no-cors", // クロスオリジン制限を回避
+          cache: "no-store", // キャッシュを使用せず、最新の結果を取得
+        });
+
+        // 応答が存在する場合は接続成功とみなす
+        if (response) {
+          console.log("インターネット接続あり");
+          return true;
+        }
+      } catch (error) {
+        console.error("インターネット接続なし", error);
+      }
+
+      return false;
+    }
+
+    // 統合された処理
+    document.addEventListener('DOMContentLoaded', async function () {
       var urlParams = new URLSearchParams(window.location.search);
       var res = urlParams.get('res');
-
       var uid = urlParams.get('uid');
-      if (res === 'success' && uid && uid.includes('sessiontimer')) {
-        window.location.href = 'verification.html?' + urlParams.toString();
-      } else if (res === 'success' || res === 'already') {
-        urlParams.delete('lang');
-        window.location.href = 'welcome.html?' + urlParams.toString();
-      } else if (res === 'failed') {
-        // ローディング画面を表示
+
+      // res === 'success' の場合、インターネット接続確認をスキップ
+      if (res === 'success') {
+        if (uid && uid.includes('sessiontimer')) {
+          // セッションタイマーが含まれる場合、verification.htmlへリダイレクト
+          window.location.href = 'verification.html?' + urlParams.toString();
+        } else {
+          // 認証成功の場合、welcome.htmlへリダイレクト
+          urlParams.delete('lang');
+          window.location.href = 'welcome.html?' + urlParams.toString();
+        }
+        return;
+      }
+
+      // res !== 'success' の場合のみインターネット接続を確認
+      const isConnected = await checkInternetConnection();
+      if (!isConnected) {
+        alert("The internet is currently unavailable.");
+        return; // 接続がない場合は処理を終了
+      }
+
+      // 認証失敗時の処理
+      if (res === 'failed') {
         var loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.display = 'flex';
-        // ボタンの自動クリック
+        if (loadingScreen) {
+          loadingScreen.style.display = 'flex'; // ローディング画面を表示
+        }
+
+        // 再試行ボタンのクリックをシミュレート
         var retryButton = document.getElementById('linker1');
         if (retryButton) {
           retryButton.click();
