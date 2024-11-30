@@ -6,8 +6,8 @@
   <script>
     async function checkInternetConnection() {
       try {
-        // GoogleのパブリックDNSをチェック
-        const response = await fetch("https://8.8.8.8/", {
+        // 外部コンテンツへの到達をチェック
+        const response = await fetch("https://webauth.wifiservice.jp/", {
           method: "HEAD",
           mode: "no-cors", // クロスオリジン制限を回避
           cache: "no-store", // キャッシュを使用せず、最新の結果を取得
@@ -15,11 +15,11 @@
 
         // エラーが発生しない場合、接続成功
         if (response) {
-          console.log("インターネット接続あり");
+          console.log("Internet is available.");
           return true;
         }
       } catch (error) {
-        console.error("インターネット接続なし:", error);
+        console.error("Internet is unavailable.", error);
       }
 
       return false;
@@ -29,7 +29,7 @@
     document.addEventListener('DOMContentLoaded', async function () {
       const isConnected = await checkInternetConnection();
       if (!isConnected) {
-        alert("インターネット接続がありません");
+        alert("Internet is currently unavailable.");
       }
     });
   </script>
