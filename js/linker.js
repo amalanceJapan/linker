@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (!calledParam) {
-        alert("Missing required parameter: called or apmac");
+        alert("Required parameter missing, please retry.");
   
         // リダイレクト処理
         var timestamp = Date.now();
