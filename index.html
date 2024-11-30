@@ -708,11 +708,11 @@
 
         // 応答が存在する場合は接続成功とみなす
         if (response) {
-          console.log("インターネット接続あり");
+          console.log("Internet is available.");
           return true;
         }
       } catch (error) {
-        console.error("インターネット接続なし", error);
+        console.error("Internet is unavailable.", error);
       }
 
       return false;
@@ -740,8 +740,12 @@
       // res !== 'success' の場合のみインターネット接続を確認
       const isConnected = await checkInternetConnection();
       if (!isConnected) {
-        alert("The internet is currently unavailable.");
-        return; // 接続がない場合は処理を終了
+        if (urlParams.get('lang') === 'en') {
+          alert("The internet is currently unavailable.");
+        } else {
+          alert("インターネット接続サービスは現在利用できません。");
+        }        
+        return;
       }
 
       // 認証失敗時の処理

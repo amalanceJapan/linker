@@ -21,20 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // calledParam が存在しない場合の処理
-      if (!calledParam) {
-        // 言語パラメータが 'en' なら英語メッセージ、それ以外なら日本語メッセージを表示
+      if (!calledParam) {        
         if (urlParams.get('lang') === 'en') {
           alert("Required parameter missing, please retry.");
         } else {
-          alert("必要なパラメタが足りません。リトライしてください。");
+          alert("ログインに必要な情報が足りません。リトライしてください。");
         }
 
-        // リダイレクト処理
-        var timestamp = Date.now(); // 現在のタイムスタンプを取得
-        var redirectUrl = "http://x.wiffy.me/"; // リダイレクト先のURL
-        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp; // タイムスタンプをクエリパラメータとして追加
-        window.location.replace(redirectUrlWithParams); // リダイレクトを実行
-        return; // 処理を終了
+        // 強制リダイレクト処理
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.replace(redirectUrlWithParams);
+        return;
       }
 
       const kvFetchUrl = `https://sd.wiffy.me/getSubdir?called=${calledParam}`;
@@ -59,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!subdir) {          
           if (urlParams.get('lang') === 'en') {
-            alert("No subdirectory returned from API.");
+            alert("The target directory was not returned.");
           } else {
             alert("ターゲットディレクトリが返却されませんでした。");
           }        
@@ -82,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         console.error("Fetch error:", error);
         if (urlParams.get('lang') === 'en') {
-          alert("An error occurred while contacting the server.");
+          alert("Failed to connect to the authentication server.");
         } else {
-          alert("認証サーバーへの接続中にエラーが発生しました。");
+          alert("認証サーバーとの接続に失敗しました。");
         }        
       }
     });
