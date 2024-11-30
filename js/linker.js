@@ -22,7 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!calledParam) {
         alert("Missing required parameter: called or apmac");
-        return;
+  
+        // リダイレクト処理
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.replace(redirectUrlWithParams);
+        return; // 処理を終了
       }
 
       const kvFetchUrl = `https://sd.wiffy.me/getSubdir?called=${calledParam}`;
