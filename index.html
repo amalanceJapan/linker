@@ -741,9 +741,9 @@
       const isConnected = await checkInternetConnection();
       if (!isConnected) {
         if (urlParams.get('lang') === 'en') {
-          alert("The internet is currently unavailable.");
+          alert("The internet service is currently unavailable.");
         } else {
-          alert("インターネット接続サービスは現在利用できません。");
+          alert("インターネット接続サービスは現在ご利用いただけません。");
         }        
         return;
       }
