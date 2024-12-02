@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
 
-<head>  
+<head>
   <title>wiffy</title>
   <meta name="description" content="wiffy">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -186,6 +186,33 @@
       margin-left: 5px;
       margin-right: 10px;
     }
+
+    .dis {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 240px;
+      background-color: #000;
+      color: #ffffff !important;
+      padding: 5px 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .dis-icon {
+      width: 30px;
+      height: auto;
+      margin-left: 1px;
+      margin-right: 20px;
+    }
+
+    .dis-login-text {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
   </style>
 
   <style>
@@ -275,6 +302,7 @@
         document.getElementById('browser-check-button').textContent = 'Yes';
         document.getElementById('notice-message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
         document.getElementById('notice-message-1').innerHTML = 'You can use the Internet. By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
+        document.getElementById('notice-message-X').innerHTML = 'This is a digital communication tool that allows you to exchange information within Wi-Fi coverage, even during internet outages.</br>Your posts will be automatically deleted after a few days, but please be mindful of public order and morals, as well as consideration for others.';
 
         document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the password.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>Use without connecting to the Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without connecting to the Internet</strong></span>.</p></div><div class="col-lg-6"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
@@ -290,6 +318,7 @@
         document.getElementById('browser-check-button').textContent = 'はい';
         document.getElementById('notice-message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
         document.getElementById('notice-message-1').innerHTML = 'インターネットをご利用いただけます。本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
+        document.getElementById('notice-message-X').innerHTML = 'インターネット途絶時でもWi-Fiの届く範囲内で情報交換ができる、デジタルコミュニケーション・ツールです。</br>あなたの投稿は数日間で自動削除されますが、公序良俗と他者への配慮を心がけましょう。';
 
         document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてパスワードをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>一旦、インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
@@ -369,38 +398,27 @@
       <div class="container">
 
         <!-- 接続エリア -->
-        <div class="col-lg-12 mb-4 text-center" id="connection">
+        <div class="mb-4" id="connection">
           <p class="mt-3" id="notice-message-1"></p>
+          <div class="text-center">
+            <button id="linker1" type="button" data-click="ln" class="lne" style="border: none;">
+              <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
+              <span class="login-text" id="login-line">Sign in with LINE</span>
+            </button>
+            <button id="linker9" type="button" data-click="ml" class="eml" style="border: none;">
+              <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
+              <span class="login-text" id="login-email">Sign in with Email</span>
+            </button>
+          </div>
           <div class="seperator p-b-0 p-t-0"><i class="icon-chevron-down"></i></div>
-          <div class="row">
-            <div class="col-lg-12">
-              <button id="linker1" type="button" data-click="ln" class="lne" style="border: none;">
-                <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
-                <span class="login-text">Sign in with LINE</span>
-              </button>
-            </div>
-            <div class="col-lg-12 mt-2">
-              <button id="linker9" type="button" data-click="ml" class="eml" style="border: none;">
-                <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
-                <span class="login-text">Sign in with Email</span>
-              </button>
-            </div>
-            <!--
-            <div class="col-lg-12 mt-2">
-              <button id="linker2" type="button" data-click="gg" class="ggl" style="border: none;">
-                <img src="images/logos/icon_ggl.png" alt="Google icon" class="ggl-icon" />
-                <span class="login-text">Sign in with Google</span>
-              </button>
-            </div>            
-            <div class="col-lg-12 mt-2">
-              <button id="linker3" type="button" data-click="fb" class="fbk" style="border: none;">
-                <img src="images/logos/icon_fbk.png" alt="Email icon" class="fbk-icon" />
-                <span class="login-text">Sign in with Facebook</span>
-              </button>
-            </div>            
-            -->
+          <p class="" id="notice-message-X"></p>
+          <div class="text-center">
+            <a href="https://chat.wiffy.me:8443/call/oyguuk7x" class="dis" style="border: none;"><img
+                src="images/logos/icon_dis.png" alt="Chat icon" class="dis-icon" />
+              <span class="login-text">Join wireless chat</span></a>
           </div>
         </div>
+
         <!-- お知らせエリア -->
         <div class="accordion" id="notice">
           <div class="ac-item">
@@ -675,7 +693,6 @@
         </div>
         <div class="modal-footer">
           <div class="float-left">
-            <button id="linker5" type="button" data-click="ma" class="btn btn-b">Get online</button>
             <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>
           </div>
         </div>
@@ -744,7 +761,7 @@
           alert("The internet service is currently unavailable.");
         } else {
           alert("インターネット接続サービスは現在ご利用いただけません。");
-        }        
+        }
         return;
       }
 
