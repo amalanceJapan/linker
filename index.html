@@ -300,11 +300,13 @@
         document.getElementById('browser-check-notice').textContent = 'Is this page already open in a standard browser?';
         */
         document.getElementById('browser-check-button').textContent = 'Yes';
-        document.getElementById('notice-message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
-        document.getElementById('notice-message-1').innerHTML = 'You can use the Internet.';
-        document.getElementById('notice-message-2').innerHTML = 'By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
-        document.getElementById('notice-message-3').innerHTML = 'You can use an open chat service that does not require an internet connection.';
-        document.getElementById('notice-message-4').innerHTML = 'Your posts will be automatically deleted after a few days, but please be mindful of public order and morals, as well as consideration for others.</br>Upon internet restoration, disaster management staff and volunteers may join this chat room to collect urgent needs.';
+        document.getElementById('message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
+        document.getElementById('message-1').innerHTML = 'You can use the Internet.';
+        document.getElementById('message-2').innerHTML = 'By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
+        document.getElementById('message-3').innerHTML = 'You can use an open chat service that does not require an internet connection.';
+        document.getElementById('message-4').innerHTML = 'Your posts will be automatically deleted after a few days, but please be mindful of public order and morals, as well as consideration for others.</br>Upon internet restoration, disaster management staff and volunteers may join this chat room to collect urgent needs.';
+        document.getElementById('message-5').textContent = 'You can access the latest disaster prevention related materials offline.';
+        document.getElementById('message-6').textContent = 'If you are in a designated evacuation shelter, please register as an evacuee.';
 
         document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the password.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>Use without connecting to the Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without connecting to the Internet</strong></span>.</p></div><div class="col-lg-6"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
@@ -318,11 +320,13 @@
         document.getElementById('browser-check-notice').textContent = 'このページはすでに標準ブラウザで開かれていますか？';
         */
         document.getElementById('browser-check-button').textContent = 'はい';
-        document.getElementById('notice-message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
-        document.getElementById('notice-message-1').innerHTML = 'インターネットをご利用いただけます。';
-        document.getElementById('notice-message-2').innerHTML = '本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
-        document.getElementById('notice-message-3').innerHTML = 'インターネット接続不要のオープンチャットをご利用いただけます。';
-        document.getElementById('notice-message-4').innerHTML = 'あなたのコメントは数日間で自動削除されますが、公序良俗と他者への配慮を心がけましょう。</br>また、インターネット復旧直後は、防災課職員やボランティアがこのチャットルームに参加し、緊急ニーズを収集する場合がございます。';
+        document.getElementById('message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
+        document.getElementById('message-1').innerHTML = 'インターネットをご利用いただけます。';
+        document.getElementById('message-2').innerHTML = '本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
+        document.getElementById('message-3').innerHTML = 'インターネット接続不要のオープンチャットをご利用いただけます。';
+        document.getElementById('message-4').innerHTML = 'あなたのコメントは数日間で自動削除されますが、公序良俗と他者への配慮を心がけましょう。</br>また、インターネット復旧直後は、防災課職員やボランティアがこのチャットルームに参加し、緊急ニーズを収集する場合がございます。';
+        document.getElementById('message-5').textContent = '最新の防災関連資料をオフラインで取得できます。';
+        document.getElementById('message-6').textContent = 'あなたのいる場所が指定避難所の場合、避難者登録にご協力ください。';
 
         document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてパスワードをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>一旦、インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
@@ -403,7 +407,7 @@
 
         <!-- 接続エリア -->
         <div class="mb-4" id="connection">
-          <p class="mt-3" id="notice-message-1"></p>
+          <p class="mt-3" id="message-1"></p>
           <div class="row text-center">
             <div class="col-md-12">
               <button id="linker1" type="button" data-click="ln" class="lne" style="border: none;">
@@ -418,21 +422,40 @@
               </button>
             </div>
           </div>
-          <p class="mt-3" id="notice-message-2"></p>
+          <p class="mt-3" id="message-2"></p>
           <div class="seperator p-b-0 p-t-0"></div>
-          <p class="" id="notice-message-3"></p>
+          <p class="" id="message-3"></p>
           <div class="text-center">
             <a href="https://chat.wiffy.me:8443/call/oyguuk7x" class="dis" style="border: none;"><img
                 src="images/logos/icon_dis.png" alt="Chat icon" class="dis-icon" />
               <span class="login-text">Join</span></a>
           </div>
-          <p class="mt-3" id="notice-message-4"></p>
+          <p class="mt-3" id="message-4"></p>
+          <div class="seperator p-b-0 p-t-0"></div>
+          <div class="row">
+            <div class="col-lg-3">
+              <p class="" id="message-5"></p>
+            </div>
+            <div class="col-lg-3 text-center mb-3">
+              <a href="https://chat.wiffy.me:8443/s/Tz64Wq8FYpfE9a6"
+                class="btn btn-dark btn-icon-holder btn-shadow btn-light-hover" style="text-transform: none">Download<i
+                  class="fa fa-download"></i></a>
+            </div>
+            <div class="col-lg-3">
+              <p class="" id="message-6"></p>
+            </div>
+            <div class="col-lg-3 text-center">
+              <a href="https://chat.wiffy.me:8443/apps/forms/s/nJXLJ6aXpZ9JNYX2AMD5QybX"
+                class="btn btn-dark btn-icon-holder btn-shadow btn-light-hover" style="text-transform: none">Check in<i
+                  class="icon-user-check"></i></a>
+            </div>
+          </div>
         </div>
 
         <!-- お知らせエリア -->
         <div class="accordion" id="notice">
           <div class="ac-item">
-            <h5 class="ac-title" id="notice-message-0"></h5>
+            <h5 class="ac-title" id="message-0"></h5>
             <div class="ac-content">
               <ol>
                 <li id="item-1" class="mt-3"></li>
