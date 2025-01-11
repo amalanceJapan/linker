@@ -362,7 +362,7 @@
         document.getElementById('browser-check-button').textContent = 'Yes';
         document.getElementById('message-0').textContent = 'If this page is displayed in a different browser than usual, please tap here.';
         document.getElementById('message-1').innerHTML = 'You can use the Internet.';
-        document.getElementById('message-2').innerHTML = 'By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a>.';
+        document.getElementById('message-2').innerHTML = 'By using this service, you agree to the <a data-bs-target="#modal-en" data-bs-toggle="modal" href="#">Terms of Service</a> and <a data-bs-target="#modal-privacy-en" data-bs-toggle="modal" href="#">Privacy Policy</a>.';
         document.getElementById('message-3').innerHTML = 'You can use an open chat service that does not require an internet connection.';
         document.getElementById('message-4').innerHTML = '<small>Your posts will be automatically deleted after a few days, but please be mindful of public order and morals, as well as consideration for others.</br>Upon internet restoration, disaster management staff and volunteers may join this chat room to collect urgent needs.</small>';
         document.getElementById('message-5').textContent = 'You can access the latest disaster prevention related materials offline.';
@@ -382,7 +382,7 @@
         document.getElementById('browser-check-button').textContent = 'はい';
         document.getElementById('message-0').textContent = 'このページが通常と異なるブラウザで表示された方はここをタップしてください。';
         document.getElementById('message-1').innerHTML = 'インターネットをご利用いただけます。';
-        document.getElementById('message-2').innerHTML = '本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>に同意されたものと見做されます。';
+        document.getElementById('message-2').innerHTML = '本サービスのご利用により、<a data-bs-target="#modal-ja" data-bs-toggle="modal" href="#">利用規約</a>と<a data-bs-target="#modal-privacy-ja" data-bs-toggle="modal" href="#">プライバシーポリシー</a>に同意されたものと見做されます。';
         document.getElementById('message-3').innerHTML = 'インターネット接続不要のオープンチャットをご利用いただけます。';
         document.getElementById('message-4').innerHTML = '<small>投稿は数日以内に自動削除されますが、公序良俗と他者への配慮を心がけましょう。</br>また、インターネット復旧直後は、防災課職員がこのチャットルームに参加し、緊急ニーズを収集する場合がございます。</small>';
         document.getElementById('message-5').textContent = '防災に役立つ資料を取得できます。';
@@ -492,15 +492,15 @@
               </button>
             </div>
             <div class="col-md-12">
-              <button id="linker4" type="button" data-click="kk" class="kko" style="border: none;">
-                <img src="images/logos/icon_kko.png" alt="Kakao icon" class="kko-icon" />
-                <span class="kko-login-text">Login</span>
-              </button>
-            </div>
-            <div class="col-md-12">
               <button id="linker5" type="button" data-click="wc" class="wch" style="border: none;">
                 <img src="images/logos/icon_wch.png" alt="WeChat icon" class="wch-icon" />
                 <span class="wch-login-text">Login</span>
+              </button>
+            </div>
+            <div class="col-md-12">
+              <button id="linker4" type="button" data-click="kk" class="kko" style="border: none;">
+                <img src="images/logos/icon_kko.png" alt="Kakao icon" class="kko-icon" />
+                <span class="kko-login-text">Login</span>
               </button>
             </div>
             <div class="col-md-12">
@@ -832,6 +832,355 @@
                 Users with the Service.</p>
               <strong>Supplementary Provisions</strong>
               <p>These Terms shall take effect from April 1, 2015.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="float-left">
+            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: Modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-privacy-ja" tabindex="-1" role="modal" aria-labelledby="modal-privacy-label-ja"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modal-privacy-label-ja" class="modal-title">個人情報保護方針</h4>
+          <small class="text-muted">最終更新日: 2024年7月27日</small>
+          <button aria-hidden="true" data-bs-dismiss="modal" class="btn-close" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <p>ここでは、あなたがサービスを使用する際、サービスによって収集されるあなたに由来する情報とその使用目的、使用過程について説明し、あなたのプライバシーを保護する方法について説明します。
+              </p>
+              <p>当社は、あなたの情報を使用してサービスを提供し改善します。サービスを利用することにより、あなたはこのポリシーに従ってあなたの情報が収集および使用されることに同意するものとします。</p>
+              <h4 class="">定義</h4>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>用語</th>
+                    <th>説明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="20%">サービス</td>
+                    <td>公衆無線LANサービスを指します。</td>
+                  </tr>
+                  <tr>
+                    <td>あなた</td>
+                    <td>サービスにアクセスしこれを使用する個人を指します。</td>
+                  </tr>
+                  <tr>
+                    <td>アカウント</td>
+                    <td>あなたがサービスまたはサービスの一部にアクセスするために作成された一意のアカウントを意味します。</td>
+                  </tr>
+                  <tr>
+                    <td>当社</td>
+                    <td>アマランス合同会社</td>
+                  </tr>
+                  <tr>
+                    <td>国</td>
+                    <td>サービスの対象エリアは日本に限定されます。</td>
+                  </tr>
+                  <tr>
+                    <td>デバイス</td>
+                    <td>コンピューター、携帯電話、電子タブレットなど、サービスにアクセスできるデバイスを意味します。</td>
+                  </tr>
+                  <tr>
+                    <td>個人データ</td>
+                    <td>サービスによって識別された、または識別可能な個人に関連する情報のことです。</td>
+                  </tr>
+                  <tr>
+                    <td>サービスプロバイダー</td>
+                    <td>当社に代わってサービスを提供および運用する法人を意味します。</td>
+                  </tr>
+                  <tr>
+                    <td>サードパーティのサービス</td>
+                    <td>あなたがサービスへログインする際に、これを補助するOpenIDプロバイダー等を指します。</td>
+                  </tr>
+                  <tr>
+                    <td>使用状況データ</td>
+                    <td>利用状況データは、サービスの利用時に自動的に収集されます。</td>
+                  </tr>
+                  <tr>
+                    <td>SNSからの情報</td>
+                    <td>サードパーティのSNSを介してサービスを使用するために、これらのアカウントを用いてログインが可能です。</td>
+                  </tr>
+                  <tr>
+                    <td>追跡技術とCookie</td>
+                    <td>当社は、サービスの追跡と分析を目的としてCookieやWebビーコンなどの追跡技術を使用しています。</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 class="">個人データの使用</h4>
+              <p>当社は、以下の目的で個人データを使用する場合があります。
+              </p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td width="20%">サービスの提供と維持のため</td>
+                    <td>サービスの使用状況を監視することを含みます。</td>
+                  </tr>
+                  <tr>
+                    <td>アカウントの管理のため</td>
+                    <td>
+                      サービスのアカウントとして、その登録状態を管理するため。<br><br>
+                      例えば、あなたがご自身のWi-Fi子機を用いてサービスに接続する際、Wi-Fiサインインポータルを経由し各SNSサービスへのログインをきっかけとして、インターネットアクセスが認可されます。<br><br>
+                      この際、サービスのアカウント属性として、各SNSプロバイダーで保管されるユーザー識別子であるOpenIDをはじめ、ハンドルネーム、メールアドレスが、サービスのデータベースにも保管されます。<br><br>
+                      あなたのOpenIDはサービスに接続でき、かつ、インターネットを利用できる認証済みのユーザーIDとしてサービスに保管され、また、IDの有効期間などの状態管理にも利用されます。<br><br>
+                      同時に保管されるあなたのハンドルネームとメールアドレスは、あなたがご自身のアカウントを私たちに削除してほしい際、私たちにそれらを伝えることでアカウントの特定と削除が容易になります。<br><br>
+                      メールアドレスのみの登録を以てアカウントを取得する場合も同様の処理がなされ、サービスの利用を開始でき、あなたの要求に応じていつでも個人データを削除することができます。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>あなたに連絡するため</td>
+                    <td>サービスの重要な変更等に関して、電子メールで連絡することがあります。</td>
+                  </tr>
+                  <tr>
+                    <td>事業譲渡の場合</td>
+                    <td>会社が合併、買収または資産売却に関与している場合、個人データが転送されることがあります。</td>
+                  </tr>
+                  <tr>
+                    <td>その他の目的のため</td>
+                    <td>使用傾向の特定やエクスペリエンスの改善のために情報を使用する場合があります。</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 class="">個人データの保管</h4>
+              <p>当社は、このプライバシーポリシーに記載された目的に必要な期間のみ、個人データを保持します。
+              </p>
+              <p>当社は、内部分析の目的で使用状況データも保持します。通常、より短い期間保持されます。
+              </p>
+              <h4 class="">個人データの転送
+              </h4>
+              <p>個人データを含むあなたの情報は、当社の営業所および処理に関与する他の場所で処理されます。
+              </p>
+              <p>このプライバシーポリシーへの同意は、この転送への同意とみなされます。
+              </p>
+              <p>当社は、データが安全に扱われるように合理的な措置を講じます。
+              </p>
+              <h4 class="">個人データの開示</h4>
+              <strong>事業譲渡の場合
+              </strong>
+              <p>会社が合併、買収または資産売却に関与している場合、個人データが転送される場合があります。
+              </p>
+              <strong>法的な執行
+              </strong>
+              <p>法律によって、会社があなたの個人データを開示する必要がある場合があります。
+              </p>
+              <strong>その他の法的要件
+              </strong>
+              <p>必要であると判断した場合、以下の目的で個人データを開示する場合があります。
+              </p>
+              <ul>
+                <li>法的義務を遵守する</li>
+                <li>会社の権利または財産を保護および防御する</li>
+                <li>サービスに関連する不正行為を防止または調査する</li>
+                <li>サービスのユーザーまたは一般の人々の個人的な安全を保護する</li>
+                <li>法的責任から保護する</li>
+              </ul>
+              <h4 class="">個人データの保全目標</h4>
+              <p>インターネットや電子ストレージの安全性は100％確保できないため、絶対的なセキュリティを保証することはできません。</p>
+              <h4 class="">個人データの削除要求</h4>
+              <p>あなたは私たちのサービスからあなたの個人データを削除するように私たちに要求することができます。</p>
+              <p>メールアドレス: <a href="mailto:info@wiffy.me">info@wiffy.me</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="float-left">
+            <button data-bs-dismiss="modal" class="btn btn-b btn-dark" type="button">閉じる</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: Modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-privacy-en" tabindex="-1" role="modal" aria-labelledby="modal-privacy-label-en"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modal-privacy-label-en" class="modal-title">Privacy Policy</h4>
+          <small class="text-muted">Last Updated: July 27, 2024</small>
+          <button aria-hidden="true" data-bs-dismiss="modal" class="btn-close" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <p>This section explains the information collected about you when you use the service, the
+                purpose and process of use, and how your privacy is protected.
+              </p>
+              <p>We use your information to provide and improve the service. By using the service, you agree
+                that your information will be collected and used in accordance with this policy.
+              </p>
+              <h4 class="">Definitions
+              </h4>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Term</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="20%">Service</td>
+                    <td>Refers to the public wireless LAN service.</td>
+                  </tr>
+                  <tr>
+                    <td>You</td>
+                    <td>The individual accessing or using the service.</td>
+                  </tr>
+                  <tr>
+                    <td>Account</td>
+                    <td>A unique account created for you to access the service or parts of it.</td>
+                  </tr>
+                  <tr>
+                    <td>We</td>
+                    <td>Amalance LLC</td>
+                  </tr>
+                  <tr>
+                    <td>Country</td>
+                    <td>The service area is limited to Japan.</td>
+                  </tr>
+                  <tr>
+                    <td>Device</td>
+                    <td>Any device that can access the service, such as a computer, mobile phone, or
+                      tablet.</td>
+                  </tr>
+                  <tr>
+                    <td>Personal Data</td>
+                    <td>Information that identifies or can identify an individual, related to the
+                      service.</td>
+                  </tr>
+                  <tr>
+                    <td>Service Provider</td>
+                    <td>A legal entity providing and operating services on behalf of us.</td>
+                  </tr>
+                  <tr>
+                    <td>Third-Party Services</td>
+                    <td>Providers like OpenID assisting with login to the service.</td>
+                  </tr>
+                  <tr>
+                    <td>Usage Data</td>
+                    <td>Usage data collected automatically while using the service.</td>
+                  </tr>
+                  <tr>
+                    <td>SNS Information</td>
+                    <td>We may allow you to log into the service using social networking accounts.</td>
+                  </tr>
+                  <tr>
+                    <td>Tracking Technologies &amp; Cookies</td>
+                    <td>Tracking and analytics tools like cookies or web beacons used to enhance the
+                      service experience.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4 class="">Usage of Personal Data
+              </h4>
+              <p>We may use personal data for the following purposes:
+              </p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td width="20%">To Provide and Maintain the Service</td>
+                    <td>Including monitoring the usage of the service.</td>
+                  </tr>
+                  <tr>
+                    <td>To Manage Accounts</td>
+                    <td>
+                      To manage the registration status as a service account.<br><br>
+                      For example, when you connect to the service using your own Wi-Fi device,
+                      internet access is authorized through the Wi-Fi sign-in portal by logging into
+                      various SNS services<br><br>
+                      At this time, the service database stores attributes such as your OpenID, which
+                      is a user identifier kept by each SNS provider, as well as your handle name and
+                      email address<br><br>
+                      Your OpenID is stored in the service as an authenticated user ID that allows
+                      connection to the service and access to the internet, and it is also used for
+                      managing the status, such as the validity period of the ID<br><br>
+                      The handle name and email address stored at the same time make it easier for us
+                      to identify and delete your account when you request its deletion<br><br>
+                      The same process applies if you obtain an account by registering with only your
+                      email address, allowing you to start using the service and enabling us to delete
+                      your personal data at any time upon your request.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>To Contact You</td>
+                    <td>We may contact you by email regarding significant changes to the service.</td>
+                  </tr>
+                  <tr>
+                    <td>In the Event of a Business Transfer</td>
+                    <td>Your personal data may be transferred if we merge, are acquired, or sell assets.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>For Other Purposes</td>
+                    <td>Such as identifying usage trends and improving user experience.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4 class="">Data Storage
+              </h4>
+              <p>We retain personal data only for as long as necessary for the purposes outlined in this
+                privacy policy.
+              </p>
+              <p>Usage data is retained for internal analysis purposes and typically for a shorter duration.
+              </p>
+              <h4 class="">Data Transfer
+              </h4>
+              <p>Your information, including personal data, is processed at our operating offices and other
+                locations where the parties involved in processing are located.
+              </p>
+              <p>Your consent to this privacy policy represents your agreement to this transfer.
+              </p>
+              <p>We will take all steps reasonably necessary to ensure your data is treated securely and in
+                accordance with this policy.
+              </p>
+              <h4 class="">Data Disclosure
+              </h4>
+              <strong>In the Event of a Business Transfer</strong>
+              <p>If we are involved in a merger, acquisition, or asset sale, your personal data may be
+                transferred.</p>
+              <strong>Law Enforcement</strong>
+              <p>Under certain circumstances, we may be required to disclose your personal data if required by
+                law.
+              </p>
+              <strong>Other Legal Requirements
+              </strong>
+              <p>We may disclose your personal data in the good faith belief that such action is necessary to:
+              </p>
+              <ul>
+                <li>Comply with a legal obligation</li>
+                <li>Protect and defend our rights or property</li>
+                <li>Prevent or investigate possible wrongdoing in connection with the service</li>
+                <li>Protect the personal safety of users of the service or the public</li>
+                <li>Protect against legal liability</li>
+              </ul>
+              <h4 class="">Data Security Level
+              </h4>
+              <p>The security of your personal data is important to us, but no method of transmission over the internet
+                or electronic storage is 100% secure.
+              </p>
+              <h4 class="">Request for Data Deletion
+              </h4>
+              <p>You may request to delete your personal data from our service by contacting us at:
+              </p>
+              <p>Email: <a href="mailto:info@wiffy.me">info@wiffy.me</a></p>
             </div>
           </div>
         </div>
