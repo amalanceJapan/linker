@@ -190,6 +190,62 @@
       margin-right: 10px;
     }
 
+    .wch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 240px;
+      background-color: #2AB905;
+      color: #ffffff !important;
+      padding: 5px 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .wch-icon {
+      width: 30px;
+      height: auto;
+      margin-left: 1px;
+      margin-right: 59px;
+    }
+
+    .wch-login-text {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+
+    .kko {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 240px;
+      background-color: #FCDF0D;
+      color: #301D1B !important;
+      padding: 5px 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .kko-icon {
+      width: 30px;
+      height: auto;
+      margin-left: 1px;
+      margin-right: 59px;
+    }
+
+    .kko-login-text {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+
     .dis {
       display: inline-flex;
       align-items: center;
@@ -350,12 +406,16 @@
 
       // 'lang' パラメータが 'en' の場合にのみ #linker9 ボタンを表示
       if (urlParams.get('lang') === 'en') {
-        document.getElementById('linker2').style.display = 'inline-flex';
+
         document.getElementById('linker3').style.display = 'inline-flex';
+        document.getElementById('linker4').style.display = 'inline-flex';
+        document.getElementById('linker5').style.display = 'inline-flex';
         document.getElementById('linker9').style.display = 'inline-flex';
       } else {
-        document.getElementById('linker2').style.display = 'none';
+
         document.getElementById('linker3').style.display = 'none';
+        document.getElementById('linker4').style.display = 'none';
+        document.getElementById('linker5').style.display = 'none';
         document.getElementById('linker9').style.display = 'none';
       }
 
@@ -417,18 +477,14 @@
         <div class="mb-4" id="connection">
           <p class="mt-3" id="message-1"></p>
           <div class="row text-center">
-            <div class="col-md-12">
-              <button id="linker1" type="button" data-click="ln" class="lne" style="border: none;">
-                <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
-                <span class="login-text">Login</span>
-              </button>
-            </div>
+            <!--
             <div class="col-md-12">
               <button id="linker2" type="button" data-click="gg" class="ggl" style="border: none;">
                 <img src="images/logos/icon_ggl.png" alt="Google icon" class="ggl-icon" />
                 <span class="ggl-login-text">Login</span>
               </button>
             </div>
+            -->
             <div class="col-md-12">
               <button id="linker3" type="button" data-click="fb" class="fbk" style="border: none;">
                 <img src="images/logos/icon_fbk.png" alt="Facebook icon" class="fbk-icon" />
@@ -436,11 +492,31 @@
               </button>
             </div>
             <div class="col-md-12">
+              <button id="linker4" type="button" data-click="kk" class="kko" style="border: none;">
+                <img src="images/logos/icon_kko.png" alt="Kakao icon" class="kko-icon" />
+                <span class="kko-login-text">Login</span>
+              </button>
+            </div>
+            <div class="col-md-12">
+              <button id="linker5" type="button" data-click="wc" class="wch" style="border: none;">
+                <img src="images/logos/icon_wch.png" alt="WeChat icon" class="wch-icon" />
+                <span class="wch-login-text">Login</span>
+              </button>
+            </div>
+            <div class="col-md-12">
+              <button id="linker1" type="button" data-click="ln" class="lne" style="border: none;">
+                <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
+                <span class="login-text">Login</span>
+              </button>
+            </div>
+            <!--
+            <div class="col-md-12">
               <button id="linker9" type="button" data-click="ml" class="eml" style="border: none;">
                 <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
                 <span class="login-text">Sign In</span>
               </button>
             </div>
+            -->
           </div>
           <p class="mt-3" id="message-2"></p>
           <div class="seperator p-b-0 p-t-0"></div>
