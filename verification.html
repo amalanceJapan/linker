@@ -27,12 +27,7 @@
       if (!urlParams.has('lang') && userLanguage !== 'ja' && userLanguage !== 'ja-JP') {
         urlParams.set('lang', 'en');
         window.location.search = urlParams.toString();
-      }
-      
-      var timeLeft = urlParams.get('timeleft') || 900;  // デフォルトは900秒 (15分)
-
-      // 秒を分に変換
-      var timeLeftInMinutes = Math.floor(timeLeft / 60);
+      }            
 
       // 言語切り替えリンク設定
       var changeLanguageLink = document.getElementById('changeLanguage');
