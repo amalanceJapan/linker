@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = newUrl.href;
       } catch (error) {
         console.error("Fetch error:", error);
+        /* 'Incorrect static password'で転けやすいので、一々エラー通知をしない
         if (urlParams.get('lang') === 'en') {
-          alert("Failed to connect to the authentication server.");
+          alert("Failed to connect to authentication server. Retrying.");
         } else {
-          alert("認証サーバーとの接続に失敗しました。");
-        }        
+          alert("認証サーバーとの接続に失敗しました。リトライします。");
+        }
+        */       
       }
     });
   });
