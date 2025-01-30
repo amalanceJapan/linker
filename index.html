@@ -99,8 +99,8 @@
     }
 
     .ggl {
-      background-color: #EFEFEF;
-      color: #000000 !important;
+      background-color: #000000;
+      color: #FFFFFF !important;
     }
 
     .eml {
@@ -335,12 +335,12 @@
       });
 
       // 'lang' パラメータが 'en' の場合に表示
-      if (urlParams.get('lang') === 'en') {        
+      if (urlParams.get('lang') === 'en') {
         document.getElementById('gg').style.display = 'inline-flex';
         document.getElementById('kt').style.display = 'inline-flex';
         document.getElementById('wc').style.display = 'inline-flex';
 
-      } else {        
+      } else {
         document.getElementById('gg').style.display = 'none';
         document.getElementById('kt').style.display = 'none';
         document.getElementById('wc').style.display = 'none';
