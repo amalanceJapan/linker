@@ -335,14 +335,12 @@
       });
 
       // 'lang' パラメータが 'en' の場合に表示
-      if (urlParams.get('lang') === 'en') {
-        document.getElementById('fb').style.display = 'inline-flex';
+      if (urlParams.get('lang') === 'en') {        
         document.getElementById('gg').style.display = 'inline-flex';
         document.getElementById('kt').style.display = 'inline-flex';
         document.getElementById('wc').style.display = 'inline-flex';
 
-      } else {
-        document.getElementById('fb').style.display = 'none';
+      } else {        
         document.getElementById('gg').style.display = 'none';
         document.getElementById('kt').style.display = 'none';
         document.getElementById('wc').style.display = 'none';
@@ -412,14 +410,14 @@
                 <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
                 <span class="login-text">Sign In</span>
               </button>
-            </div>
-            -->
+            </div>            
             <div class="col-md-12">
               <button id="fb" type="button" data-click="fb" class="fbk" style="border: none;">
                 <img src="images/logos/icon_fbk.png" alt="Facebook icon" class="fbk-icon" />
                 <span class="fbk-login-text">Login</span>
               </button>
             </div>
+            -->
             <div class="col-md-12">
               <button id="gg" type="button" data-click="gg" class="ggl" style="border: none;">
                 <img src="images/logos/icon_ggl.png" alt="Google icon" class="ggl-icon" />
@@ -437,14 +435,13 @@
                 <img src="images/logos/icon_wch.png" alt="WeChat icon" class="wch-icon" />
                 <span class="wch-login-text">Login</span>
               </button>
-            </div>            
+            </div>
             <div class="col-md-12">
               <button id="ln" type="button" data-click="ln" class="lne" style="border: none;">
                 <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
                 <span class="login-text">Login</span>
               </button>
             </div>
-                        
           </div>
           <p class="mt-3" id="message-2"></p>
           <div class="seperator p-b-0 p-t-0"></div>
@@ -1138,7 +1135,23 @@
         }
         return;
       }
-
+      /*
+            // 認証失敗時の処理
+            if (res === 'failed') {
+              if (urlParams.get('lang') === 'en') {
+                alert("Wireless LAN authentication failed. Please retry.");
+              } else {
+                alert("無線LANの認証に失敗しました。リトライしてください。");
+              }
+      
+              // 強制リダイレクト処理
+              var timestamp = Date.now();
+              var redirectUrl = "http://x.wiffy.me/";
+              var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+              window.location.replace(redirectUrlWithParams);
+              return;
+            }
+      */
       // 認証失敗時の処理
       if (res === 'failed') {
         var loadingScreen = document.getElementById('loading-screen');
@@ -1147,13 +1160,12 @@
         }
 
         // 再試行ボタンのクリックをシミュレート
-        if (click) {
-          var retryButton = document.getElementById(click);
-          if (retryButton) {
-            retryButton.click();
-          }
+        var retryButton = document.getElementById('ln');
+        if (retryButton) {
+          retryButton.click();
         }
       }
+
     });
   </script>
   　
