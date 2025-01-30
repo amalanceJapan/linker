@@ -73,7 +73,7 @@
       font-family: Arial, sans-serif;
       font-weight: bold;
       font-size: 16px;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       border: none;
     }
@@ -99,8 +99,8 @@
     }
 
     .ggl {
-      background-color: #191919;
-      color: #FFFFFF !important;
+      background-color: #EFEFEF;
+      color: #000000 !important;
     }
 
     .eml {
@@ -336,11 +336,13 @@
 
       // 'lang' パラメータが 'en' の場合にのみ #linker9 ボタンを表示
       if (urlParams.get('lang') === 'en') {
+        document.getElementById('fb').style.display = 'inline-flex';
         document.getElementById('gg').style.display = 'inline-flex';
         document.getElementById('kk').style.display = 'inline-flex';
         document.getElementById('wc').style.display = 'inline-flex';
 
       } else {
+        document.getElementById('fb').style.display = 'none';
         document.getElementById('gg').style.display = 'none';
         document.getElementById('kk').style.display = 'none';
         document.getElementById('wc').style.display = 'none';
@@ -404,13 +406,7 @@
         <div class="mb-4" id="connection">
           <p class="mt-3" id="message-1"></p>
           <div class="row text-center">
-            <!--            
-            <div class="col-md-12">
-              <button id="fb" type="button" data-click="fb" class="fbk" style="border: none;">
-                <img src="images/logos/icon_fbk.png" alt="Facebook icon" class="fbk-icon" />
-                <span class="fbk-login-text">Login</span>
-              </button>
-            </div>
+            <!--                        
             <div class="col-md-12">
               <button id="ml" type="button" data-click="ml" class="eml" style="border: none;">
                 <img src="images/logos/icon_eml.png" alt="Email icon" class="eml-icon" />
@@ -419,9 +415,9 @@
             </div>
             -->
             <div class="col-md-12">
-              <button id="ln" type="button" data-click="ln" class="lne" style="border: none;">
-                <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
-                <span class="login-text">Login</span>
+              <button id="fb" type="button" data-click="fb" class="fbk" style="border: none;">
+                <img src="images/logos/icon_fbk.png" alt="Facebook icon" class="fbk-icon" />
+                <span class="fbk-login-text">Login</span>
               </button>
             </div>
             <div class="col-md-12">
@@ -442,6 +438,13 @@
                 <span class="wch-login-text">Login</span>
               </button>
             </div>            
+            <div class="col-md-12">
+              <button id="ln" type="button" data-click="ln" class="lne" style="border: none;">
+                <img src="images/logos/icon_lne.png" alt="LINE icon" class="lne-icon" />
+                <span class="login-text">Login</span>
+              </button>
+            </div>
+                        
           </div>
           <p class="mt-3" id="message-2"></p>
           <div class="seperator p-b-0 p-t-0"></div>
