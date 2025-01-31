@@ -1135,36 +1135,36 @@
         }
         return;
       }
-      /*
-            // 認証失敗時の処理
-            if (res === 'failed') {
-              if (urlParams.get('lang') === 'en') {
-                alert("Wireless LAN authentication failed. Please retry.");
-              } else {
-                alert("無線LANの認証に失敗しました。リトライしてください。");
-              }
-      
-              // 強制リダイレクト処理
-              var timestamp = Date.now();
-              var redirectUrl = "http://x.wiffy.me/";
-              var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
-              window.location.replace(redirectUrlWithParams);
-              return;
-            }
-      */
       // 認証失敗時の処理
       if (res === 'failed') {
-        var loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
-          loadingScreen.style.display = 'flex'; // ローディング画面を表示
+        if (urlParams.get('lang') === 'en') {
+          alert("Wireless LAN authentication failed. Please retry.");
+        } else {
+          alert("無線LANの認証に失敗しました。リトライしてください。");
         }
 
-        // 再試行ボタンのクリックをシミュレート
-        var retryButton = document.getElementById('ln');
-        if (retryButton) {
-          retryButton.click();
-        }
+        // 強制リダイレクト処理
+        var timestamp = Date.now();
+        var redirectUrl = "http://x.wiffy.me/";
+        var redirectUrlWithParams = redirectUrl + "?ts=" + timestamp;
+        window.location.replace(redirectUrlWithParams);
+        return;
       }
+      /*
+       // 認証失敗時の処理
+       if (res === 'failed') {
+         var loadingScreen = document.getElementById('loading-screen');
+         if (loadingScreen) {
+           loadingScreen.style.display = 'flex'; // ローディング画面を表示
+         }
+ 
+         // 再試行ボタンのクリックをシミュレート
+         var retryButton = document.getElementById('ln');
+         if (retryButton) {
+           retryButton.click();
+         }
+       }
+       */
 
     });
   </script>
