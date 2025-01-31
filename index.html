@@ -143,7 +143,7 @@
     /* 各アイコンのマージン */
     .lne-icon {
       margin-left: 1px;
-      margin-right: 64px;
+      margin-right: 59px;
     }
 
     .ggl-icon {
@@ -296,9 +296,9 @@
         document.getElementById('message-6').textContent = 'If you are in an evacuation shelter, please register as an evacuee.';
         */
 
-        document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the password.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
-        document.getElementById('item-2').innerHTML = '<p>Use Without Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without connecting to the Internet</strong></span>.</p></div><div class="col-lg-6"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
-        document.getElementById('item-3').innerHTML = '<p>After returning to the home screen, open the standard browser like Chrome or Safari, <strong>paste the copied password into the address bar</strong>, and open the page.</p>';
+        document.getElementById('item-1').innerHTML = '<p>Tap the button below to copy the safe link.</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
+        document.getElementById('item-2').innerHTML = '<p>Use Without Internet.</p><div class="row"><div class="col-lg-6"><h5>For iPhone</h5><p>Tap <span style="color: blue;"><strong>Cancel</strong></span> at the top right of the screen, and then select <span style="color: red;"><strong>Use without Internet</strong></span>.</p></div><div class="col-lg-6"><h5>For Android</h5><p>Tap the menu icon ︙at the top right of the screen, then tap <strong>Use this network as is</strong> from the pop-up options.</p></div></div>';
+        document.getElementById('item-3').innerHTML = '<p>After returning to the home screen, open the standard browser like Chrome or Safari, <strong>paste the copied safe link into the address bar</strong>, and open the login page. <i class="fab fa-weixin"></i>微信用户请在微信内的搜索框中粘贴刚才复制的安全链接并进行搜索。</p>';
 
       } else {
         langToggleSpan.innerText = "EN";
@@ -318,9 +318,9 @@
         document.getElementById('message-6').textContent = 'ここが指定避難所の場合、避難者登録にご協力ください。';
         */
 
-        document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてパスワードをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
+        document.getElementById('item-1').innerHTML = '<p>次のボタンをタップしてセキュアリンクをコピーします。</p><button onclick="copyUrlToClipboard(this)" class="btn btn-block">Copy</button>';
         document.getElementById('item-2').innerHTML = '<p>一旦、インターネットを接続せずに使用します。</p><div class="row"><div class="col-lg-6"><h5>iPhoneの場合</h5><p>画面右上の <span style="color: blue;"><strong>キャンセル</strong></span> をタップし、ポップアップする選択肢で <span style="color: red;"><strong>インターネットを接続せずに使用</strong></span> をタップします。</p></div><div class="col-lg-6"><h5>Androidの場合</h5><p>画面右上のメニューアイコン︙をタップし、ポップアップする選択肢で <strong>このネットワークをそのまま使用する</strong> をタップします。</p></div></div>';
-        document.getElementById('item-3').innerHTML = '<p>ホーム画面に戻り、Safariなどの標準ブラウザを開き、先ほどコピーした<strong>パスワードをアドレスバーにペーストし</strong>、ページを開きます。</p>';
+        document.getElementById('item-3').innerHTML = '<p>ホーム画面に戻り、Safariなどの標準ブラウザを開き、先ほどコピーした<strong>セキュアリンクをアドレスバーにペーストし</strong>、ログインページを開きます。</p>';
       }
 
       // 言語切り替えリンクをクリックした時の処理
@@ -358,7 +358,7 @@
       tempInput.select();
       document.execCommand("copy");
       document.body.removeChild(tempInput);
-      button.textContent = "Password Copied!";
+      button.textContent = "Safe link is copied!";
     }
 
     function showConnection() {
