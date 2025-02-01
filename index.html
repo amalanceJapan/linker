@@ -15,8 +15,7 @@
   <link rel="manifest" href="images/logos/site.webmanifest">
   <link rel="mask-icon" href="images/logos/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-
+  <meta name="theme-color" content="#ffffff">  
   <!-- Stylesheets & Fonts -->
   <link href="css/plugins.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -99,9 +98,11 @@
     }
 
     .ggl {
-      background-color: #fff;
-      color: #000 !important;
+      background-color: #346DF2;
+      color: #fff !important;      
+      /*
       border: 0.1px solid #ccc !important;
+      */
     }
 
     .eml {
@@ -400,32 +401,36 @@
 
     <section class="p-t-0 p-b-20">
       <div class="container">
-
+                
         <!-- 接続エリア -->
         <div class="mb-4" id="connection">
           <p class="mt-3" id="message-1"></p>
           <div class="row text-center">
             <div class="col-md-12">
               <button id="gg" type="button" data-click="gg" class="ggl" style="border: none;">
-                <img src="images/logos/icon_ggl.png" alt="Sign in with Google" class="ggl-icon" />
+                <img src="images/logos/icon_ggl.png" alt="Sign in with Google" class="ggl-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="Login with Google">
                 <span class="ggl-login-text">Login</span>
               </button>
             </div>
             <div class="col-md-12">
               <button id="kt" type="button" data-click="kt" class="kko" style="border: none;">
-                <img src="images/logos/icon_kko.png" alt="Sign in with Kakao" class="kko-icon" />
+                <img src="images/logos/icon_kko.png" alt="Sign in with Kakao" class="kko-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="Login with Kakao">
                 <span class="kko-login-text">Login</span>
               </button>
             </div>
             <div class="col-md-12">
               <button id="wc" type="button" data-click="wc" class="wch" style="border: none;">
-                <img src="images/logos/icon_wch.png" alt="Sign in with WeChat" class="wch-icon" />
+                <img src="images/logos/icon_wch.png" alt="Sign in with WeChat" class="wch-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="Login with Weixin">
                 <span class="wch-login-text">Login</span>
               </button>
             </div>
             <div class="col-md-12">
               <button id="ln" type="button" data-click="ln" class="lne" style="border: none;">
-                <img src="images/logos/icon_lne.png" alt="Sign in with LINE" class="lne-icon" />
+                <img src="images/logos/icon_lne.png" alt="Sign in with LINE" class="lne-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="Login with LINE">
                 <span class="login-text">Login</span>
               </button>
             </div>
@@ -1114,7 +1119,7 @@
   <!-- Plugins -->
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/functions.js"></script>
+  <script src="js/functions.js"></script>  
   <!-- 認証処理 -->
   <script src="js/linker.js"></script>
   <!-- 認証後処理 -->
